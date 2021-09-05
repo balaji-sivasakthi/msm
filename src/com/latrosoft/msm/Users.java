@@ -2,24 +2,19 @@ package com.latrosoft.msm;
 
 
 
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,25 +33,30 @@ public class Users extends javax.swing.JInternalFrame {
     /**
      * Creates new form User1
      */
-    public Users() throws ClassNotFoundException, SQLException {
-        initComponents();
-        this.db=new DBHelper();
-        autoID();
-        User_Load();
-        editbtn.setEnabled(false); 
-        deletebtn.setEnabled(false);
-    }
-
-    Connection con;
+    
+    
+    
+    
+   Connection con;
    PreparedStatement pst;
    ResultSet rs;
    DefaultTableModel d;
-    DBHelper db;
+   DBHelper db;
    
    String path= null;
    byte[] userimage = null;
 
    
+    public Users() throws ClassNotFoundException, SQLException {
+        initComponents();
+        
+        this.db=new DBHelper();
+        autoID();
+        UserLoad();
+        editbtn.setEnabled(false); 
+        deletebtn.setEnabled(false);
+    }
+
   
     public void autoID()
     {
@@ -71,9 +71,7 @@ public class Users extends javax.swing.JInternalFrame {
             {
                 long id = Long.parseLong(rs.getString("MAX(id)").substring(2,rs.getString("MAX(id)").length()));
                 id++;
-                 txtid.setText("U" + String.format("%03d", id));
-                
-                
+                txtid.setText("U" + String.format("%03d", id)); 
             }
             
             
@@ -84,10 +82,9 @@ public class Users extends javax.swing.JInternalFrame {
             Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         }
     } 
-      public void User_Load() throws ClassNotFoundException{
+      public void UserLoad() throws ClassNotFoundException{
         
         try {
-           
             
             int c;
             pst = db.setData("select * from users ");
@@ -111,16 +108,14 @@ public class Users extends javax.swing.JInternalFrame {
                    v.add(rs.getString("gender"));
                    v.add(rs.getString("dob"));
                    v.add(rs.getString("emailid"));
-                   v.add(rs.getString("aadhaar"));
+                   v.add(rs.getString("aadhaarnumber"));
                    v.add(rs.getString("doj"));
-                   v.add(rs.getString("number"));
+                   v.add(rs.getString("phno"));
                    v.add(rs.getString("position"));
                    v.add(rs.getString("salary"));
                    v.add(rs.getString("usertype"));
                    v.add(rs.getString("address"));
                    v.add(rs.getBlob("image"));
-                  
-                  
                    
                }
                d.addRow(v);
@@ -742,7 +737,7 @@ public class Users extends javax.swing.JInternalFrame {
             label.setIcon(null);
             txtuname.requestFocus();
 
-            User_Load();
+            UserLoad();
             autoID();
             editbtn.setEnabled(true);
             JOptionPane.showMessageDialog(null,"User deleted");
@@ -758,7 +753,7 @@ public class Users extends javax.swing.JInternalFrame {
 
     private void editbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editbtnActionPerformed
 
-        try {
+       
             String id = txtid.getText();
             String uname = txtuname.getText();
             String pass = txtpass.getText();
@@ -771,13 +766,61 @@ public class Users extends javax.swing.JInternalFrame {
             String salary = txtsalary.getText();
             String utype = txtutype.getSelectedItem().toString();
             String address = txtaddress.getText();
-
+  
             DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
             String birth = date.format(txtdob.getDate());
             String join = date.format(txtjoin.getDate());
+//            
+//            
+//           
+//            
+            
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }else if(birth.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill birth");
+                return;
+             }else if(join.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill join");
+                return;
+             }
+             
 
+//
+//          
+//
+        try {
            
-            pst = db.setData("update users  set username = ?,password = ?,gender = ?,dob = ?,emailid = ?,aadhaar = ?,doj = ?,number = ?,position = ?,salary = ?,usertype = ?,address = ?,image = ? where id = ? ");
+            pst = db.setData("update users  set username = ?,password = ?,gender = ?,dob = ?,emailid = ?,aadhaarnumber = ?,doj = ?,phno = ?,position = ?,salary = ?,usertype = ?,address = ?,image = ? where id = ? ");
 
             pst.setString(1,uname);
             pst.setString(2,pass);
@@ -811,7 +854,7 @@ public class Users extends javax.swing.JInternalFrame {
             label.setIcon(null);
             txtuname.requestFocus();
 
-            User_Load();
+            UserLoad();
             autoID();
             deletebtn.setEnabled(true);
             JOptionPane.showMessageDialog(null,"User updated");
@@ -821,7 +864,9 @@ public class Users extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+     editbtn.setEnabled(false);
+      deletebtn.setEnabled(false);
+     
     }//GEN-LAST:event_editbtnActionPerformed
 
     private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
@@ -844,8 +889,8 @@ public class Users extends javax.swing.JInternalFrame {
                 String gender = rs.getString("gender");
                 String email = rs.getString("emailid");
 
-                String  aadhaar=rs.getString("aadhaar");
-                String  number =rs.getString("number");
+                String  aadhaar=rs.getString("aadhaarnumber");
+                String  number =rs.getString("phno");
                 String position = rs.getString("position");
                 String salary = rs.getString("salary");
                 String utype = rs.getString("usertype");
@@ -861,6 +906,7 @@ public class Users extends javax.swing.JInternalFrame {
                
                 Blob blob  =  rs.getBlob("image");
                 byte[]imagebytes = blob.getBytes(1,(int)blob.length());
+                userimage = blob.getBytes(1,(int)blob.length());
                 ImageIcon image = new ImageIcon(imagebytes);
                 Image im = image.getImage();
                 Image myImg = im.getScaledInstance(label.getWidth(),label.getHeight(),Image.SCALE_SMOOTH);
@@ -929,17 +975,53 @@ public class Users extends javax.swing.JInternalFrame {
         txtuname.setText( d.getValueAt(selectIndex,1).toString());
         txtpass.setText( d.getValueAt(selectIndex,2).toString());
         txtgender.setSelectedItem( d.getValueAt(selectIndex,3).toString());
-       // txtdob.setDate(new Date(d.getValueAt(selectIndex,4).toString()));
+       try {
+           Date dt1 = new SimpleDateFormat("yyyy-MM-dd").parse(d.getValueAt(selectIndex,4).toString());
+           Date dt2 = new SimpleDateFormat("yyyy-MM-dd").parse(d.getValueAt(selectIndex,7).toString());
+           txtdob.setDate(dt1);
+           txtjoin.setDate(dt2);
+       } catch (ParseException ex) {
+           Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       
         txtemail.setText( d.getValueAt(selectIndex,5).toString());
         txtaadhaar.setText( d.getValueAt(selectIndex,6).toString());
-        //txtjoin.setDate(new Date(d.getValueAt(selectIndex,7).toString()));
+       
+       
         txtphone.setText(d.getValueAt(selectIndex,8).toString());
         txtposition.setSelectedItem( d.getValueAt(selectIndex,9).toString());
         txtsalary.setText( d.getValueAt(selectIndex,10).toString());
         txtutype.setSelectedItem( d.getValueAt(selectIndex,11).toString());
         txtaddress.setText( d.getValueAt(selectIndex,12).toString());
-
-        // label.setIcon(new ImageIcon(d.getValueAt(selectIndex,13).toString())) ;
+            
+        
+        System.out.println(d.getValueAt(selectIndex,13));
+        
+         Blob blob;
+       try {
+           
+        pst = db.setData("select * from users where id =?");
+        pst.setString(1,d.getValueAt(selectIndex,0).toString());
+        ResultSet rs = pst.executeQuery();
+        rs.next();
+        blob = rs.getBlob("image");
+        byte[]imagebytes = blob.getBytes(1,(int)blob.length());
+        userimage = blob.getBytes(1,(int)blob.length());
+        ImageIcon image = new ImageIcon(imagebytes);
+        Image im = image.getImage();
+        Image myImg = im.getScaledInstance(label.getWidth(),label.getHeight(),Image.SCALE_SMOOTH);
+        ImageIcon newImage = new ImageIcon(myImg);
+        
+        
+        label.setIcon(newImage) ;
+       } catch (SQLException ex) {
+           Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+       } catch (ClassNotFoundException ex) {
+           Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       
+       editbtn.setEnabled(true);
+       deletebtn.setEnabled(true);
         
 
         
@@ -986,8 +1068,9 @@ public class Users extends javax.swing.JInternalFrame {
 
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
 
-            try {
-                String id = txtid.getText();
+        
+        
+         String id = txtid.getText();
                 String uname = txtuname.getText();
                 String pass = txtpass.getText();
                 String gender = txtgender.getSelectedItem().toString();
@@ -1004,8 +1087,49 @@ public class Users extends javax.swing.JInternalFrame {
                 String birth = date.format(txtdob.getDate());
                 String join = date.format(txtjoin.getDate());
 
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
                
-                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number,position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaarnumber,doj,phno, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
                 pst.setString(1,id);
                 pst.setString(2,uname);
@@ -1038,7 +1162,7 @@ public class Users extends javax.swing.JInternalFrame {
 
                 label.setIcon(null);
                 txtuname.requestFocus();
-                User_Load();
+                UserLoad();
                 autoID();
                 editbtn.setEnabled(true);
                 deletebtn.setEnabled(true);
@@ -1134,7 +1258,7 @@ public class Users extends javax.swing.JInternalFrame {
                 label.setIcon(null);
                 txtuname.requestFocus();
 
-                User_Load();
+                UserLoad();
                 autoID();
                 JOptionPane.showMessageDialog(null,"User added");
 
