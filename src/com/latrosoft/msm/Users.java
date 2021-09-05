@@ -61,7 +61,7 @@ public class Users extends javax.swing.JInternalFrame {
     public void autoID()
     {
         try {
-              rs = db.getData("select MAX(itemid) from item");
+             rs = db.getData("select MAX(id) from users");
             rs.getString("MAX(id)");
             if(rs.getString("MAX(id)") == null)
             {
@@ -84,12 +84,13 @@ public class Users extends javax.swing.JInternalFrame {
             Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         }
     } 
-      public void User_Load(){
+      public void User_Load() throws ClassNotFoundException{
         
         try {
-             
+           
+            
             int c;
-            pst = con.prepareStatement("select * from users ");
+            pst = db.setData("select * from users ");
             rs= pst.executeQuery();
             
            ResultSetMetaData rsd = rs.getMetaData();
@@ -719,9 +720,8 @@ public class Users extends javax.swing.JInternalFrame {
             String birth = date.format(txtdob.getDate());
             String join = date.format(txtjoin.getDate());
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con= DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system","root","");
-            pst = con.prepareStatement(" delete from users where id=? ");
+           
+            pst = db.setData(" delete from users where id=? ");
 
             pst.setString(1,id);
             pst.executeUpdate();
@@ -776,9 +776,8 @@ public class Users extends javax.swing.JInternalFrame {
             String birth = date.format(txtdob.getDate());
             String join = date.format(txtjoin.getDate());
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con= DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system","root","");
-            pst = con.prepareStatement("update users  set username = ?,password = ?,gender = ?,dob = ?,emailid = ?,aadhaar = ?,doj = ?,number = ?,position = ?,salary = ?,usertype = ?,address = ?,image = ? where id = ? ");
+           
+            pst = db.setData("update users  set username = ?,password = ?,gender = ?,dob = ?,emailid = ?,aadhaar = ?,doj = ?,number = ?,position = ?,salary = ?,usertype = ?,address = ?,image = ? where id = ? ");
 
             pst.setString(1,uname);
             pst.setString(2,pass);
@@ -829,10 +828,8 @@ public class Users extends javax.swing.JInternalFrame {
         String id = txtsearch.getText();
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con= DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system","root","");
-
-            pst = con.prepareStatement("select * from users where id = ?");
+          
+            pst = db.setData("select * from users where id = ?");
             pst.setString(1,id);
             ResultSet rs = pst.executeQuery();
             if(rs.next() == false){
@@ -858,26 +855,19 @@ public class Users extends javax.swing.JInternalFrame {
                 String join = rs.getString("doj");
                 Date dt1 = new SimpleDateFormat("yyyy-MM-dd").parse(birth);
                 Date dt2 = new SimpleDateFormat("yyyy-MM-dd").parse(join);
-                // getting outpu strem
+               
 
-                //reference
-                Blob  blob;
-                byte[] imagebytes;
-                ImageIcon image;
-                Image im,myImg;
 
-                while(rs.next()){
-                    blob=rs.getBlob("image");
-                    imagebytes=blob.getBytes(1,(int)blob.length());
-                    image = new ImageIcon(imagebytes);
-                    im = image.getImage();
-                    myImg = im.getScaledInstance(label.getWidth(),label.getHeight(),Image.SCALE_SMOOTH);
-                    ImageIcon newImage = new ImageIcon(myImg);
-                    label.setIcon(newImage);
-                }
-
-                //                 byte[] imagebytes = blob.getBytes(1,(int)blob.length());
-
+               
+                Blob blob  =  rs.getBlob("image");
+                byte[]imagebytes = blob.getBytes(1,(int)blob.length());
+                ImageIcon image = new ImageIcon(imagebytes);
+                Image im = image.getImage();
+                Image myImg = im.getScaledInstance(label.getWidth(),label.getHeight(),Image.SCALE_SMOOTH);
+                ImageIcon newImage = new ImageIcon(myImg);
+                    
+   
+                 
                 txtid.setText(id1);
                 txtuname.setText(uname.trim());
                 txtpass.setText(pass.trim());
@@ -891,9 +881,12 @@ public class Users extends javax.swing.JInternalFrame {
                 txtsalary.setText(salary.trim());
                 txtutype.setSelectedItem( utype.trim());
                 txtaddress.setText(address.trim());
-
+                label.setIcon(newImage);
+                
                 editbtn.setEnabled(true);
                 deletebtn.setEnabled(true);
+                clearbtn.setEnabled(false);
+                savebtn.setEnabled(false);
                 txtsearch.setText("");
             }
         } catch (ClassNotFoundException ex) {
@@ -926,6 +919,9 @@ public class Users extends javax.swing.JInternalFrame {
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         savebtn.setEnabled(false);
+        clearbtn.setEnabled(false);
+        editbtn.setEnabled(true);
+        deletebtn.setEnabled(true);
         d= (DefaultTableModel)table.getModel();
         int selectIndex= table.getSelectedRow();
 
@@ -933,10 +929,10 @@ public class Users extends javax.swing.JInternalFrame {
         txtuname.setText( d.getValueAt(selectIndex,1).toString());
         txtpass.setText( d.getValueAt(selectIndex,2).toString());
         txtgender.setSelectedItem( d.getValueAt(selectIndex,3).toString());
-        // txtdob.setDate(new Date(d.getValueAt(selectIndex,4).toString()));
+       // txtdob.setDate(new Date(d.getValueAt(selectIndex,4).toString()));
         txtemail.setText( d.getValueAt(selectIndex,5).toString());
         txtaadhaar.setText( d.getValueAt(selectIndex,6).toString());
-        // txtjoin.setDate(new Date(d.getValueAt(selectIndex,7).toString()));
+        //txtjoin.setDate(new Date(d.getValueAt(selectIndex,7).toString()));
         txtphone.setText(d.getValueAt(selectIndex,8).toString());
         txtposition.setSelectedItem( d.getValueAt(selectIndex,9).toString());
         txtsalary.setText( d.getValueAt(selectIndex,10).toString());
@@ -944,10 +940,9 @@ public class Users extends javax.swing.JInternalFrame {
         txtaddress.setText( d.getValueAt(selectIndex,12).toString());
 
         // label.setIcon(new ImageIcon(d.getValueAt(selectIndex,13).toString())) ;
-        editbtn.setEnabled(true);
-        deletebtn.setEnabled(true);
+        
 
-        //
+        
     }//GEN-LAST:event_tableMouseClicked
 
     private void browsebtnKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_browsebtnKeyTyped
@@ -970,7 +965,7 @@ public class Users extends javax.swing.JInternalFrame {
             BufferedImage img;
             img = ImageIO.read(picchooser.getSelectedFile());
             ImageIcon imageIcon = new ImageIcon(new
-                ImageIcon(img).getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
+            ImageIcon(img).getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
 
             label.setIcon(imageIcon);
             File image = new File(path);
@@ -988,148 +983,8 @@ public class Users extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_browsebtnActionPerformed
 
-//   public void check(){
-//      if(txtuname.getText().equals("")){
-//       JOptionPane.showMessageDialog(this,"User not completely added");
-//          return;
-//      }
-//       else if(txtpass.getText().toString().equals("")){
-//                 JOptionPane.showMessageDialog(this,"User not completely added");
-//                  return;
-//            }
-//           
-//            else if( txtdob.getDate().equals("")){
-//                 JOptionPane.showMessageDialog(this,"User not completely added");
-//                  return;
-//            }
-//            else if(txtemail.getText().equals("")){
-//                 JOptionPane.showMessageDialog(this,"User not completely added");
-//                  return;
-//            }
-//            else if( txtaadhaar.getText().equals("")){
-//                 JOptionPane.showMessageDialog(this,"User not completely added");
-//                  return;
-//            }
-//           
-//            else if(txtjoin.getDate().equals("")){
-//                 JOptionPane.showMessageDialog(this,"User not completely added");
-//                  return;
-//            }
-//            else if(txtphone.getText().equals("")){
-//                 JOptionPane.showMessageDialog(this,"User not completely added");
-//                  return;
-//            }
-//            else if(txtposition.getSelectedItem().toString().equals("")){
-//                 JOptionPane.showMessageDialog(this,"User not completely added");
-//                  return;
-//            }
-//            else if( txtsalary.getText().equals("")){
-//                 JOptionPane.showMessageDialog(this,"User not completely added");
-//                  return;
-//            }
-//            else if(txtutype.getSelectedItem().toString().equals("")){
-//                 JOptionPane.showMessageDialog(this,"User not completely added");
-//                  return;
-//           }
-//          else if(txtaddress.getText().equals("")){
-//                JOptionPane.showMessageDialog(this,"User not completely added");
-//                 return;
-//                    } 
-//           else if(label.getIcon().equals("")){
-//                JOptionPane.showMessageDialog(this,"User not completely added");
-//                 return;
-//                    } 
-//          else{     
-//            try {  
-//                pst.executeUpdate();
-//            } catch (SQLException ex) {
-//                Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            txtuname.setText("");
-//            txtpass.setText("");
-//            txtgender.setSelectedIndex(-1);
-//            txtdob.setDate(null);
-//             txtemail.setText("");
-//            txtaadhaar.setText("");
-//             txtjoin.setDate(null);
-//             txtphone.setText("");
-//            txtposition.setSelectedIndex(-1);
-//            txtsalary.setText("");
-//            txtutype.setSelectedIndex(-1);
-//            txtaddress.setText("");
-//           
-//            label.setIcon(null);
-//            txtuname.requestFocus();
-//          }
-//  }
-    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
 
-        //        if(txtuname.getText().equals("")&& txtpass.getPassword().toString().equals("") && txtgender.getSelectedItem().toString().equals("") &&
-            //               txtdob.getDate().equals("")&& txtemail.getText().equals("") &&  txtaadhaar.getText().equals("") && txtjoin.getDate().equals("") &&
-            //               txtphone.getText().equals("") && txtposition.getSelectedItem().toString().equals("") &&  txtsalary.getText().equals("") &&
-            //               txtutype.getSelectedItem().toString().equals("") && txtaddress.getText().equals("") && label.getIcon().equals(""))
-        //        {
-            //                 JOptionPane.showMessageDialog(this,"User not completely added");
-            //            }
-        //            else if(txtpass.getPassword().toString().equals("")){
-            //                 JOptionPane.showMessageDialog(this,"User not completely added");
-            //            }
-        //            else if(txtgender.getSelectedItem().toString().equals("")){
-            //                 JOptionPane.showMessageDialog(this,"User not completely added");
-            //            }
-        //            else if( txtdob.getDate().equals("")){
-            //                 JOptionPane.showMessageDialog(this,"User not completely added");
-            //            }
-        //            else if(txtemail.getText().equals("")){
-            //                 JOptionPane.showMessageDialog(this,"User not completely added");
-            //            }
-        //            else if( txtaadhaar.getText().equals("")){
-            //                 JOptionPane.showMessageDialog(this,"User not completely added");
-            //            }
-        //
-        //            else if(txtjoin.getDate().equals("")){
-            //                 JOptionPane.showMessageDialog(this,"User not completely added");
-            //            }
-        //            else if(txtphone.getText().equals("")){
-            //                 JOptionPane.showMessageDialog(this,"User not completely added");
-            //            }
-        //            else if(txtposition.getSelectedItem().toString().equals("")){
-            //                 JOptionPane.showMessageDialog(this,"User not completely added");
-            //            }
-        //            else if( txtsalary.getText().equals("")){
-            //                 JOptionPane.showMessageDialog(this,"User not completely added");
-            //            }
-        //            else if(txtutype.getSelectedItem().toString().equals("")){
-            //                 JOptionPane.showMessageDialog(this,"User not completely added");
-            //           }
-        //          else if(txtaddress.getText().equals("")){
-            //                JOptionPane.showMessageDialog(this,"User not completely added");
-            //                    }
-        //           else if(label.getIcon().equals("")){
-            //                JOptionPane.showMessageDialog(this,"User not completely added");
-            //                    }
-        //          else{
-            //            try {
-                //                pst.executeUpdate();
-                //            } catch (SQLException ex) {
-                //                Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-                //            }
-            //            txtuname.setText("");
-            //            txtpass.setText("");
-            //            txtgender.setSelectedIndex(-1);
-            //            txtdob.setDate(null);
-            //             txtemail.setText("");
-            //            txtaadhaar.setText("");
-            //             txtjoin.setDate(null);
-            //             txtphone.setText("");
-            //            txtposition.setSelectedIndex(-1);
-            //            txtsalary.setText("");
-            //            txtutype.setSelectedIndex(-1);
-            //            txtaddress.setText("");
-            //
-            //            label.setIcon(null);
-            //            txtuname.requestFocus();
-            //
+    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
 
             try {
                 String id = txtid.getText();
@@ -1149,9 +1004,8 @@ public class Users extends javax.swing.JInternalFrame {
                 String birth = date.format(txtdob.getDate());
                 String join = date.format(txtjoin.getDate());
 
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                con= DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system","root","");
-                pst = con.prepareStatement("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number,position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number,position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
                 pst.setString(1,id);
                 pst.setString(2,uname);
@@ -1190,9 +1044,7 @@ public class Users extends javax.swing.JInternalFrame {
                 deletebtn.setEnabled(true);
                 JOptionPane.showMessageDialog(null,"User added");
 
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
+            } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
             }
 
@@ -1247,9 +1099,8 @@ public class Users extends javax.swing.JInternalFrame {
                 String birth = date.format(txtdob.getDate());
                 String join = date.format(txtjoin.getDate());
 
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                con= DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system","root","");
-                pst = con.prepareStatement("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number,position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number,position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
                 pst.setString(1,id);
                 pst.setString(2,uname);
@@ -1287,9 +1138,7 @@ public class Users extends javax.swing.JInternalFrame {
                 autoID();
                 JOptionPane.showMessageDialog(null,"User added");
 
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
+            } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
             }
 

@@ -38,11 +38,11 @@ public class Vendors extends javax.swing.JInternalFrame {
     public Vendors() throws SQLException, ClassNotFoundException {
         this.db= new DBHelper();
         initComponents();
-          autoID();
-        showDate();
-        showTime();
-        Connect();
-        load();
+         autoID();
+         showDate();
+         showTime();
+         Connect();
+         load();
        
 
         
@@ -961,7 +961,7 @@ public class Vendors extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
-        // TODO add your handling code here:
+     
         
         df = (DefaultTableModel) jTable3.getModel();
 
@@ -1091,7 +1091,7 @@ public class Vendors extends javax.swing.JInternalFrame {
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         try {
-            // TODO add your handling code here:
+           
             df = (DefaultTableModel) jTable3.getModel();
             int selected = jTable3.getSelectedRow();
             String id = df.getValueAt(selected, 0).toString();
