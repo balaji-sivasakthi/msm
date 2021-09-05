@@ -292,6 +292,7 @@ public class Items extends javax.swing.JInternalFrame {
 
         txtspecification.setBackground(new java.awt.Color(102, 0, 102));
         txtspecification.setColumns(20);
+        txtspecification.setForeground(new java.awt.Color(255, 255, 255));
         txtspecification.setRows(5);
         jScrollPane1.setViewportView(txtspecification);
 
@@ -314,13 +315,13 @@ public class Items extends javax.swing.JInternalFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtimei1)
-                    .addComponent(txtname, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                    .addComponent(txtimei2, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                    .addComponent(txtrate, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                    .addComponent(txtdiscount, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                    .addComponent(txtqty, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                    .addComponent(txtbrand, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                    .addComponent(txtmodel, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                    .addComponent(txtname)
+                    .addComponent(txtimei2)
+                    .addComponent(txtrate)
+                    .addComponent(txtdiscount)
+                    .addComponent(txtqty)
+                    .addComponent(txtbrand)
+                    .addComponent(txtmodel)
                     .addComponent(jScrollPane1))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
@@ -451,7 +452,7 @@ public class Items extends javax.swing.JInternalFrame {
                                 .addGap(77, 77, 77)
                                 .addComponent(txtid))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

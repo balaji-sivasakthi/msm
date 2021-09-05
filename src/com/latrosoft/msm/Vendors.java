@@ -35,7 +35,8 @@ public class Vendors extends javax.swing.JInternalFrame {
     /**
      * Creates new form Business_info
      */
-    public Vendors() throws SQLException {
+    public Vendors() throws SQLException, ClassNotFoundException {
+        this.db= new DBHelper();
         initComponents();
           autoID();
         showDate();
@@ -46,6 +47,7 @@ public class Vendors extends javax.swing.JInternalFrame {
 
         
     }
+    DBHelper db;
      Connection con;
     PreparedStatement pst;
     DefaultTableModel df;
@@ -69,11 +71,12 @@ public class Vendors extends javax.swing.JInternalFrame {
         });
         t1.start();
     }
-     public void load() throws SQLException {
+     public void load() throws SQLException, ClassNotFoundException {
 
         int a;
         try {
-            pst = con.prepareStatement("select * from vendor");
+            
+            pst = db.setData("select * from vendor");
             ResultSet rs = pst.executeQuery();
 
             ResultSetMetaData rd = rs.getMetaData();
@@ -118,11 +121,11 @@ public class Vendors extends javax.swing.JInternalFrame {
     {
        
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system","root","");
-            Statement s = con.createStatement();
-            ResultSet rs = s.executeQuery("select MAX(id) from vendor");
-            rs.next();
+               
+            ResultSet rs;
+            rs = db.getData("select MAX(id) from vendor");
+            
+         
             rs.getString("MAX(id)");
             if(rs.getString("MAX(id)") == null)
             {
@@ -140,6 +143,10 @@ public class Vendors extends javax.swing.JInternalFrame {
                 Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
                 Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            catch(NullPointerException e)
+            {
+                JOptionPane.showMessageDialog(this, "Running");
             }
             
         
@@ -986,10 +993,9 @@ public class Vendors extends javax.swing.JInternalFrame {
         String Time=txttime2.getText();
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system", "root", "");
+            
             //pst = con.prepareStatement("insert into customer(Name,Number,Email,Address,Amount,Date)values(+Name+,+Number+,+Email+,+Address+,+Amount+,+Time+)");
-            pst = con.prepareStatement("insert into vendor(id,name,number,email,address,date,time)values(?,?,?,?,?,?,?)");
+            pst = db.setData("insert into vendor(id,name,number,email,address,date,time)values(?,?,?,?,?,?,?)");
            pst.setString(1,id);
             pst.setString(2, Name);
             pst.setInt(3, Number);
@@ -1033,13 +1039,9 @@ public class Vendors extends javax.swing.JInternalFrame {
 
         try {
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            con = DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system", "root", "");
-            //  pst = con.prepareStatement("insert into customer(Name,Number,Email,Address,Amount)values("+Name+","+Number+","+Email+","+Address+","+Amount+")");
-            pst = con.prepareStatement("update vendor set name = ?,number = ?,email = ?,address = ?,date=?,time=? where id = ?");
+              
+                 
+            pst = db.setData("update vendor set name = ?,number = ?,email = ?,address = ?,date=?,time=? where id = ?");
 
             pst.setString(1, Name);
             pst.setInt(2, Number);
@@ -1058,7 +1060,11 @@ public class Vendors extends javax.swing.JInternalFrame {
             txtaddress2.setText("");
             txtname2.requestFocus();
             load();
-          jButton12.setEnabled(true);
+             jButton12.setEnabled(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
+            }
+          
 
         } catch (SQLException ex) {
             Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
@@ -1078,6 +1084,8 @@ public class Vendors extends javax.swing.JInternalFrame {
             jButton12.setEnabled(true);
         } catch (SQLException ex) {
             Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton14ActionPerformed
 
@@ -1089,13 +1097,9 @@ public class Vendors extends javax.swing.JInternalFrame {
             String id = df.getValueAt(selected, 0).toString();
 
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            con = DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system", "root", "");
-            //  pst = con.prepareStatement("insert into customer(Name,Number,Email,Address,Amount)values("+Name+","+Number+","+Email+","+Address+","+Amount+")");
-            pst = con.prepareStatement("delete from vendor where id = ?");
+             
+         
+            pst = db.setData("delete from vendor where id = ?");
 
             pst.setString(1, id);
             pst.executeUpdate();
@@ -1110,6 +1114,10 @@ public class Vendors extends javax.swing.JInternalFrame {
             load();
             jButton12.setEnabled(true);
 
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
         } catch (SQLException ex) {
             Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
         }

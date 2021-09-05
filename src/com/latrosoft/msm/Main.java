@@ -232,9 +232,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_Stock_reportActionPerformed
 
     private void Business_infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Business_infoActionPerformed
-       Businessinfo binfo = new  Businessinfo();
-       this.add(binfo);
-       binfo.setVisible(true);
+        try {
+            Businessinfo binfo = new  Businessinfo();
+            this.add(binfo);
+            binfo.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_Business_infoActionPerformed
 
     private void Add_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_stockActionPerformed
@@ -243,6 +249,8 @@ public class Main extends javax.swing.JFrame {
             this.add(st);
             st.setVisible(true);
         } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_Add_stockActionPerformed
@@ -265,12 +273,16 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_Add_itemsActionPerformed
 
     private void Add_vendorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_vendorsActionPerformed
-        Vendors vn;
+       
         try {
-            vn = new  Vendors();
+             Vendors vn=new Vendors();
+            
+              vn.setVisible(true);
                 this.add(vn);
-       vn.setVisible(true);
+     
         } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
    
@@ -314,6 +326,8 @@ public class Main extends javax.swing.JFrame {
             this.add( sl);
             sl.setVisible(true);
         } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_SaleActionPerformed

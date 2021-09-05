@@ -34,7 +34,8 @@ public class Stocks extends javax.swing.JInternalFrame {
     /**
      * Creates new form Business_info
      */
-    public Stocks() throws SQLException {
+    public Stocks() throws SQLException, ClassNotFoundException {
+          this.db= new DBHelper();
         initComponents();
         Connect();
         Vendor();
@@ -48,6 +49,7 @@ public class Stocks extends javax.swing.JInternalFrame {
     PreparedStatement pst2;
     DefaultTableModel df;
     ResultSet rs;
+    DBHelper db;
 
     void showDate() {
         Date dt = new Date();
@@ -80,11 +82,11 @@ public class Stocks extends javax.swing.JInternalFrame {
 
     }
 
-    public void Vendor() {
+    public void Vendor() throws ClassNotFoundException {
         try {
-            pst = con.prepareStatement("select Distinct name from vendor");
-            rs = pst.executeQuery();
-
+          //  pst = con.prepareStatement("select Distinct name from vendor");
+            //rs = pst.executeQuery();
+               rs=db.getData("select Distinct name from vendor");
             txtvendor.removeAllItems();
 
             while (rs.next()) {
@@ -153,10 +155,10 @@ public class Stocks extends javax.swing.JInternalFrame {
     {
         df=(DefaultTableModel)jTable1.getModel();
      
-        df.setColumnCount(0);
+        jTable1.removeRowSelectionInterval(1, 10);
     }
 
-    public void add() {
+    public void add() throws ClassNotFoundException {
 
         try {
             DateTimeFormatter dt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
@@ -170,8 +172,8 @@ public class Stocks extends javax.swing.JInternalFrame {
             int balance = Integer.parseInt(txtbal.getText());
             String time = txttime.getText();
             int lastid = 0;
-            String query1 = "insert into stock(vendorname,subtotal,payment,balance,date,time)values(?,?,?,?,?,?)";
-            pst = con.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
+            
+            pst = db.setData("insert into stock(vendorname,subtotal,payment,balance,date,time)values(?,?,?,?,?,?)");
 
             pst.setString(1, vendorname);
             pst.setInt(2, subtotal);
@@ -187,9 +189,8 @@ public class Stocks extends javax.swing.JInternalFrame {
                 lastid = rs.getInt(1);
             }
 
-            String query2 = "insert into stockitem(stockid,itmid,price,quantity,total)values(?,?,?,?,?)";
-
-            pst1 = con.prepareStatement(query2);
+           
+            pst1 =db.setData("insert into stockitem(stockid,itmid,price,quantity,total)values(?,?,?,?,?)");
 
             String itemID;
           
@@ -215,8 +216,8 @@ public class Stocks extends javax.swing.JInternalFrame {
 
             }
 
-            String query3 = "update item set quantity=quantity+ ? where itemid=?";
-            pst2 = con.prepareStatement(query3);
+     
+            pst2 = db.setData("update item set quantity=quantity+ ? where itemid=?");
 
             for (int i = 0; i < jTable1.getRowCount(); i++) {
                 itemID = (String) jTable1.getValueAt(i, 0);
@@ -632,13 +633,17 @@ public class Stocks extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtbalActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int payment = Integer.parseInt(txtpay.getText());
-        int subtotal = Integer.parseInt(txtcost.getText());
-        int balance = subtotal - payment;
-
-        txtbal.setText(String.valueOf(balance));
-
-        add();
+        try {
+            int payment = Integer.parseInt(txtpay.getText());
+            int subtotal = Integer.parseInt(txtcost.getText());
+            int balance = subtotal - payment;
+            
+            txtbal.setText(String.valueOf(balance));
+            
+            add();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Stocks.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

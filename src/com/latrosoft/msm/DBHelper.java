@@ -18,13 +18,15 @@ import java.sql.Statement;
  */
 public class DBHelper {
 
-    String dbUrl = "jdbc:mysql://localhost/msmdb";
+    String dbUrl = "jdbc:mysql://localhost/mobile_erp_system";
     String username = "root";
     String password = "";
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
     Statement s;
+      PreparedStatement pst1;
+    PreparedStatement pst2;
     
     
     public DBHelper() throws ClassNotFoundException,SQLException{
@@ -59,5 +61,5 @@ public class DBHelper {
             return pst;
     
     }
-
+     
 }
