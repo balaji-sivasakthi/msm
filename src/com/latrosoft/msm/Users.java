@@ -69,7 +69,7 @@ public class Users extends javax.swing.JInternalFrame {
             }
             else
             {
-                long id = Long.parseLong(rs.getString("MAX(id)").substring(2,rs.getString("MAX(id)").length()));
+               long id = Long.parseLong(rs.getString("MAX(id)").substring(2,rs.getString("MAX(id)").length()));
                 id++;
                 txtid.setText("U" + String.format("%03d", id)); 
             }
@@ -108,9 +108,9 @@ public class Users extends javax.swing.JInternalFrame {
                    v.add(rs.getString("gender"));
                    v.add(rs.getString("dob"));
                    v.add(rs.getString("emailid"));
-                   v.add(rs.getString("aadhaarnumber"));
+                   v.add(rs.getString("aadhaar"));
                    v.add(rs.getString("doj"));
-                   v.add(rs.getString("phno"));
+                   v.add(rs.getString("number"));
                    v.add(rs.getString("position"));
                    v.add(rs.getString("salary"));
                    v.add(rs.getString("usertype"));
@@ -244,6 +244,11 @@ public class Users extends javax.swing.JInternalFrame {
                 txtaadhaarActionPerformed(evt);
             }
         });
+        txtaadhaar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtaadhaarKeyPressed(evt);
+            }
+        });
 
         txtcheck.setBackground(new java.awt.Color(102, 0, 102));
         txtcheck.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
@@ -275,6 +280,11 @@ public class Users extends javax.swing.JInternalFrame {
                 txtphoneActionPerformed(evt);
             }
         });
+        txtphone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtphoneKeyPressed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -287,6 +297,11 @@ public class Users extends javax.swing.JInternalFrame {
         txtutype.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtutype.setForeground(new java.awt.Color(102, 0, 102));
         txtutype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Worker" }));
+        txtutype.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtutypeKeyPressed(evt);
+            }
+        });
 
         savebtn.setBackground(new java.awt.Color(0, 255, 0));
         savebtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -367,6 +382,11 @@ public class Users extends javax.swing.JInternalFrame {
 
         txtaddress.setColumns(20);
         txtaddress.setRows(5);
+        txtaddress.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtaddressKeyPressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(txtaddress);
 
         txtgender.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -384,6 +404,11 @@ public class Users extends javax.swing.JInternalFrame {
         txtposition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpositionActionPerformed(evt);
+            }
+        });
+        txtposition.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtpositionKeyPressed(evt);
             }
         });
 
@@ -463,10 +488,25 @@ public class Users extends javax.swing.JInternalFrame {
                 txtsalaryActionPerformed(evt);
             }
         });
+        txtsalary.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtsalaryKeyPressed(evt);
+            }
+        });
 
         txtdob.setPreferredSize(new java.awt.Dimension(78, 25));
+        txtdob.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtdobKeyPressed(evt);
+            }
+        });
 
         txtjoin.setPreferredSize(new java.awt.Dimension(78, 25));
+        txtjoin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtjoinKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -517,7 +557,7 @@ public class Users extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtcheck, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -525,20 +565,21 @@ public class Users extends javax.swing.JInternalFrame {
                                     .addComponent(txtaadhaar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(32, 32, 32)
-                                        .addComponent(jLabel6))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel9))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(savebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(editbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtsalary, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jLabel9))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(38, 38, 38)
+                                        .addComponent(jLabel6))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(txtsalary, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                    .addGap(38, 38, 38)
+                                    .addComponent(savebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(37, 37, 37)
+                                    .addComponent(editbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addComponent(txtid)))
@@ -546,30 +587,28 @@ public class Users extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtjoin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel14))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtgender, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel2)))
+                            .addComponent(txtgender, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtjoin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtphone, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(txtdob, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(txtdob, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtutype, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(deletebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
-                                .addComponent(clearbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(clearbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtutype, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtphone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(192, 192, 192))
         );
@@ -580,34 +619,32 @@ public class Users extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtphone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtcheck)
-                                    .addGap(9, 9, 9)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtaadhaar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtuname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtgender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtcheck)
+                                .addGap(9, 9, 9)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtaadhaar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtdob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtdob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtgender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(31, 31, 31)
-                                .addComponent(txtjoin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtphone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtjoin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(33, 33, 33)
@@ -637,7 +674,7 @@ public class Users extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(searchbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(browsebtn)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -652,7 +689,7 @@ public class Users extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -661,7 +698,110 @@ public class Users extends javax.swing.JInternalFrame {
   
     
     private void txtdobKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdobKeyPressed
-       
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+     
+         String id = txtid.getText();
+                String uname = txtuname.getText();
+                String pass = txtpass.getText();
+                String gender = txtgender.getSelectedItem().toString();
+                String email = txtemail.getText();
+                String aadhaar =txtaadhaar.getText();
+                String number =txtphone.getText();
+
+                String position = txtposition.getSelectedItem().toString();
+                String salary = txtsalary.getText();
+                String utype = txtutype.getSelectedItem().toString();
+                String address = txtaddress.getText();
+
+                DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                String birth = date.format(txtdob.getDate());
+                String join = date.format(txtjoin.getDate());
+
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1,id);
+                pst.setString(2,uname);
+                pst.setString(3,pass);
+                pst.setString(4,gender);
+                pst.setString(5,birth);
+                pst.setString(6,email);
+                pst.setString(7,aadhaar);
+                pst.setString(8,join);
+                pst.setString(9,number);
+                pst.setString(10,position);
+                pst.setString(11,salary);
+                pst.setString(12,utype);
+                pst.setString(13,address);
+                pst.setBytes(14,userimage);
+                pst.executeUpdate();
+
+                txtuname.setText("");
+                txtpass.setText("");
+                txtgender.setSelectedIndex(-1);
+                txtdob.setDate(null);
+                txtemail.setText("");
+                txtaadhaar.setText("");
+                txtjoin.setDate(null);
+                txtphone.setText("");
+                txtposition.setSelectedIndex(-1);
+                txtsalary.setText("");
+                txtutype.setSelectedIndex(-1);
+                txtaddress.setText("");
+
+                label.setIcon(null);
+                txtuname.requestFocus();
+                UserLoad();
+                autoID();
+               
+                JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ }
     }//GEN-LAST:event_txtdobKeyPressed
 
     private void labelKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_labelKeyTyped
@@ -770,10 +910,7 @@ public class Users extends javax.swing.JInternalFrame {
             DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
             String birth = date.format(txtdob.getDate());
             String join = date.format(txtjoin.getDate());
-//            
-//            
-//           
-//            
+           
             
             if(uname.equals("")){
                  JOptionPane.showMessageDialog(this, "Fill User Field");
@@ -815,12 +952,10 @@ public class Users extends javax.swing.JInternalFrame {
              }
              
 
-//
-//          
-//
+
         try {
            
-            pst = db.setData("update users  set username = ?,password = ?,gender = ?,dob = ?,emailid = ?,aadhaarnumber = ?,doj = ?,phno = ?,position = ?,salary = ?,usertype = ?,address = ?,image = ? where id = ? ");
+            pst = db.setData("update users  set username = ?,password = ?,gender = ?,dob = ?,emailid = ?,aadhaar = ?,doj = ?,number = ?,position = ?,salary = ?,usertype = ?,address = ?,image = ? where id = ? ");
 
             pst.setString(1,uname);
             pst.setString(2,pass);
@@ -856,15 +991,17 @@ public class Users extends javax.swing.JInternalFrame {
 
             UserLoad();
             autoID();
-            deletebtn.setEnabled(true);
+            
             JOptionPane.showMessageDialog(null,"User updated");
+            
             savebtn.setEnabled(true);
+            clearbtn.setEnabled(true);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
         }
-     editbtn.setEnabled(false);
+      editbtn.setEnabled(false);
       deletebtn.setEnabled(false);
      
     }//GEN-LAST:event_editbtnActionPerformed
@@ -889,8 +1026,8 @@ public class Users extends javax.swing.JInternalFrame {
                 String gender = rs.getString("gender");
                 String email = rs.getString("emailid");
 
-                String  aadhaar=rs.getString("aadhaarnumber");
-                String  number =rs.getString("phno");
+                String aadhaar=rs.getString("aadhaar");
+                String  number =rs.getString("number");
                 String position = rs.getString("position");
                 String salary = rs.getString("salary");
                 String utype = rs.getString("usertype");
@@ -960,7 +1097,110 @@ public class Users extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtpositionActionPerformed
 
     private void txtgenderKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtgenderKeyPressed
+ if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+     
+         String id = txtid.getText();
+                String uname = txtuname.getText();
+                String pass = txtpass.getText();
+                String gender = txtgender.getSelectedItem().toString();
+                String email = txtemail.getText();
+                String aadhaar =txtaadhaar.getText();
+                String number =txtphone.getText();
 
+                String position = txtposition.getSelectedItem().toString();
+                String salary = txtsalary.getText();
+                String utype = txtutype.getSelectedItem().toString();
+                String address = txtaddress.getText();
+
+                DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                String birth = date.format(txtdob.getDate());
+                String join = date.format(txtjoin.getDate());
+
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1,id);
+                pst.setString(2,uname);
+                pst.setString(3,pass);
+                pst.setString(4,gender);
+                pst.setString(5,birth);
+                pst.setString(6,email);
+                pst.setString(7,aadhaar);
+                pst.setString(8,join);
+                pst.setString(9,number);
+                pst.setString(10,position);
+                pst.setString(11,salary);
+                pst.setString(12,utype);
+                pst.setString(13,address);
+                pst.setBytes(14,userimage);
+                pst.executeUpdate();
+
+                txtuname.setText("");
+                txtpass.setText("");
+                txtgender.setSelectedIndex(-1);
+                txtdob.setDate(null);
+                txtemail.setText("");
+                txtaadhaar.setText("");
+                txtjoin.setDate(null);
+                txtphone.setText("");
+                txtposition.setSelectedIndex(-1);
+                txtsalary.setText("");
+                txtutype.setSelectedIndex(-1);
+                txtaddress.setText("");
+
+                label.setIcon(null);
+                txtuname.requestFocus();
+                UserLoad();
+                autoID();
+               
+                JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ }
     }//GEN-LAST:event_txtgenderKeyPressed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
@@ -1127,9 +1367,7 @@ public class Users extends javax.swing.JInternalFrame {
              
             try {
                
-
-               
-                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaarnumber,doj,phno, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
                 pst.setString(1,id);
                 pst.setString(2,uname);
@@ -1164,9 +1402,11 @@ public class Users extends javax.swing.JInternalFrame {
                 txtuname.requestFocus();
                 UserLoad();
                 autoID();
-                editbtn.setEnabled(true);
-                deletebtn.setEnabled(true);
+               
                 JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
 
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
@@ -1179,7 +1419,110 @@ public class Users extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtphoneActionPerformed
 
     private void txtpassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpassKeyPressed
+       if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+     
+         String id = txtid.getText();
+                String uname = txtuname.getText();
+                String pass = txtpass.getText();
+                String gender = txtgender.getSelectedItem().toString();
+                String email = txtemail.getText();
+                String aadhaar =txtaadhaar.getText();
+                String number =txtphone.getText();
 
+                String position = txtposition.getSelectedItem().toString();
+                String salary = txtsalary.getText();
+                String utype = txtutype.getSelectedItem().toString();
+                String address = txtaddress.getText();
+
+                DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                String birth = date.format(txtdob.getDate());
+                String join = date.format(txtjoin.getDate());
+
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1,id);
+                pst.setString(2,uname);
+                pst.setString(3,pass);
+                pst.setString(4,gender);
+                pst.setString(5,birth);
+                pst.setString(6,email);
+                pst.setString(7,aadhaar);
+                pst.setString(8,join);
+                pst.setString(9,number);
+                pst.setString(10,position);
+                pst.setString(11,salary);
+                pst.setString(12,utype);
+                pst.setString(13,address);
+                pst.setBytes(14,userimage);
+                pst.executeUpdate();
+
+                txtuname.setText("");
+                txtpass.setText("");
+                txtgender.setSelectedIndex(-1);
+                txtdob.setDate(null);
+                txtemail.setText("");
+                txtaadhaar.setText("");
+                txtjoin.setDate(null);
+                txtphone.setText("");
+                txtposition.setSelectedIndex(-1);
+                txtsalary.setText("");
+                txtutype.setSelectedIndex(-1);
+                txtaddress.setText("");
+
+                label.setIcon(null);
+                txtuname.requestFocus();
+                UserLoad();
+                autoID();
+               
+                JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ }
     }//GEN-LAST:event_txtpassKeyPressed
 
     private void txtpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpassActionPerformed
@@ -1200,13 +1543,9 @@ public class Users extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtaadhaarActionPerformed
 
     private void txtemailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtemailKeyPressed
-
-    }//GEN-LAST:event_txtemailKeyPressed
-
-    private void txtunameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtunameKeyTyped
-        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-            try {
-                String id = txtid.getText();
+ if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+     
+         String id = txtid.getText();
                 String uname = txtuname.getText();
                 String pass = txtpass.getText();
                 String gender = txtgender.getSelectedItem().toString();
@@ -1223,8 +1562,47 @@ public class Users extends javax.swing.JInternalFrame {
                 String birth = date.format(txtdob.getDate());
                 String join = date.format(txtjoin.getDate());
 
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
                
-                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number,position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
                 pst.setString(1,id);
                 pst.setString(2,uname);
@@ -1254,32 +1632,890 @@ public class Users extends javax.swing.JInternalFrame {
                 txtsalary.setText("");
                 txtutype.setSelectedIndex(-1);
                 txtaddress.setText("");
-                txtuname.setText("");
+
                 label.setIcon(null);
                 txtuname.requestFocus();
-
                 UserLoad();
                 autoID();
+               
                 JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
 
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
             }
+ }
+    }//GEN-LAST:event_txtemailKeyPressed
 
-        }
+    private void txtunameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtunameKeyTyped
+       
     }//GEN-LAST:event_txtunameKeyTyped
 
     private void txtunameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtunameKeyPressed
+         if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+     
+         String id = txtid.getText();
+                String uname = txtuname.getText();
+                String pass = txtpass.getText();
+                String gender = txtgender.getSelectedItem().toString();
+                String email = txtemail.getText();
+                String aadhaar =txtaadhaar.getText();
+                String number =txtphone.getText();
 
+                String position = txtposition.getSelectedItem().toString();
+                String salary = txtsalary.getText();
+                String utype = txtutype.getSelectedItem().toString();
+                String address = txtaddress.getText();
+
+                DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                String birth = date.format(txtdob.getDate());
+                String join = date.format(txtjoin.getDate());
+
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1,id);
+                pst.setString(2,uname);
+                pst.setString(3,pass);
+                pst.setString(4,gender);
+                pst.setString(5,birth);
+                pst.setString(6,email);
+                pst.setString(7,aadhaar);
+                pst.setString(8,join);
+                pst.setString(9,number);
+                pst.setString(10,position);
+                pst.setString(11,salary);
+                pst.setString(12,utype);
+                pst.setString(13,address);
+                pst.setBytes(14,userimage);
+                pst.executeUpdate();
+
+                txtuname.setText("");
+                txtpass.setText("");
+                txtgender.setSelectedIndex(-1);
+                txtdob.setDate(null);
+                txtemail.setText("");
+                txtaadhaar.setText("");
+                txtjoin.setDate(null);
+                txtphone.setText("");
+                txtposition.setSelectedIndex(-1);
+                txtsalary.setText("");
+                txtutype.setSelectedIndex(-1);
+                txtaddress.setText("");
+
+                label.setIcon(null);
+                txtuname.requestFocus();
+                UserLoad();
+                autoID();
+               
+                JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ } 
     }//GEN-LAST:event_txtunameKeyPressed
 
     private void txtunameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtunameActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_txtunameActionPerformed
 
     private void txtsalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsalaryActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtsalaryActionPerformed
+
+    private void txtaadhaarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtaadhaarKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+     
+         String id = txtid.getText();
+                String uname = txtuname.getText();
+                String pass = txtpass.getText();
+                String gender = txtgender.getSelectedItem().toString();
+                String email = txtemail.getText();
+                String aadhaar =txtaadhaar.getText();
+                String number =txtphone.getText();
+
+                String position = txtposition.getSelectedItem().toString();
+                String salary = txtsalary.getText();
+                String utype = txtutype.getSelectedItem().toString();
+                String address = txtaddress.getText();
+
+                DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                String birth = date.format(txtdob.getDate());
+                String join = date.format(txtjoin.getDate());
+
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1,id);
+                pst.setString(2,uname);
+                pst.setString(3,pass);
+                pst.setString(4,gender);
+                pst.setString(5,birth);
+                pst.setString(6,email);
+                pst.setString(7,aadhaar);
+                pst.setString(8,join);
+                pst.setString(9,number);
+                pst.setString(10,position);
+                pst.setString(11,salary);
+                pst.setString(12,utype);
+                pst.setString(13,address);
+                pst.setBytes(14,userimage);
+                pst.executeUpdate();
+
+                txtuname.setText("");
+                txtpass.setText("");
+                txtgender.setSelectedIndex(-1);
+                txtdob.setDate(null);
+                txtemail.setText("");
+                txtaadhaar.setText("");
+                txtjoin.setDate(null);
+                txtphone.setText("");
+                txtposition.setSelectedIndex(-1);
+                txtsalary.setText("");
+                txtutype.setSelectedIndex(-1);
+                txtaddress.setText("");
+
+                label.setIcon(null);
+                txtuname.requestFocus();
+                UserLoad();
+                autoID();
+               
+                JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ }
+    }//GEN-LAST:event_txtaadhaarKeyPressed
+
+    private void txtjoinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtjoinKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+     
+         String id = txtid.getText();
+                String uname = txtuname.getText();
+                String pass = txtpass.getText();
+                String gender = txtgender.getSelectedItem().toString();
+                String email = txtemail.getText();
+                String aadhaar =txtaadhaar.getText();
+                String number =txtphone.getText();
+
+                String position = txtposition.getSelectedItem().toString();
+                String salary = txtsalary.getText();
+                String utype = txtutype.getSelectedItem().toString();
+                String address = txtaddress.getText();
+
+                DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                String birth = date.format(txtdob.getDate());
+                String join = date.format(txtjoin.getDate());
+
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1,id);
+                pst.setString(2,uname);
+                pst.setString(3,pass);
+                pst.setString(4,gender);
+                pst.setString(5,birth);
+                pst.setString(6,email);
+                pst.setString(7,aadhaar);
+                pst.setString(8,join);
+                pst.setString(9,number);
+                pst.setString(10,position);
+                pst.setString(11,salary);
+                pst.setString(12,utype);
+                pst.setString(13,address);
+                pst.setBytes(14,userimage);
+                pst.executeUpdate();
+
+                txtuname.setText("");
+                txtpass.setText("");
+                txtgender.setSelectedIndex(-1);
+                txtdob.setDate(null);
+                txtemail.setText("");
+                txtaadhaar.setText("");
+                txtjoin.setDate(null);
+                txtphone.setText("");
+                txtposition.setSelectedIndex(-1);
+                txtsalary.setText("");
+                txtutype.setSelectedIndex(-1);
+                txtaddress.setText("");
+
+                label.setIcon(null);
+                txtuname.requestFocus();
+                UserLoad();
+                autoID();
+               
+                JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ }
+    }//GEN-LAST:event_txtjoinKeyPressed
+
+    private void txtphoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtphoneKeyPressed
+         if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+     
+         String id = txtid.getText();
+                String uname = txtuname.getText();
+                String pass = txtpass.getText();
+                String gender = txtgender.getSelectedItem().toString();
+                String email = txtemail.getText();
+                String aadhaar =txtaadhaar.getText();
+                String number =txtphone.getText();
+
+                String position = txtposition.getSelectedItem().toString();
+                String salary = txtsalary.getText();
+                String utype = txtutype.getSelectedItem().toString();
+                String address = txtaddress.getText();
+
+                DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                String birth = date.format(txtdob.getDate());
+                String join = date.format(txtjoin.getDate());
+
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1,id);
+                pst.setString(2,uname);
+                pst.setString(3,pass);
+                pst.setString(4,gender);
+                pst.setString(5,birth);
+                pst.setString(6,email);
+                pst.setString(7,aadhaar);
+                pst.setString(8,join);
+                pst.setString(9,number);
+                pst.setString(10,position);
+                pst.setString(11,salary);
+                pst.setString(12,utype);
+                pst.setString(13,address);
+                pst.setBytes(14,userimage);
+                pst.executeUpdate();
+
+                txtuname.setText("");
+                txtpass.setText("");
+                txtgender.setSelectedIndex(-1);
+                txtdob.setDate(null);
+                txtemail.setText("");
+                txtaadhaar.setText("");
+                txtjoin.setDate(null);
+                txtphone.setText("");
+                txtposition.setSelectedIndex(-1);
+                txtsalary.setText("");
+                txtutype.setSelectedIndex(-1);
+                txtaddress.setText("");
+
+                label.setIcon(null);
+                txtuname.requestFocus();
+                UserLoad();
+                autoID();
+               
+                JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ }
+    }//GEN-LAST:event_txtphoneKeyPressed
+
+    private void txtpositionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpositionKeyPressed
+       if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+     
+         String id = txtid.getText();
+                String uname = txtuname.getText();
+                String pass = txtpass.getText();
+                String gender = txtgender.getSelectedItem().toString();
+                String email = txtemail.getText();
+                String aadhaar =txtaadhaar.getText();
+                String number =txtphone.getText();
+
+                String position = txtposition.getSelectedItem().toString();
+                String salary = txtsalary.getText();
+                String utype = txtutype.getSelectedItem().toString();
+                String address = txtaddress.getText();
+
+                DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                String birth = date.format(txtdob.getDate());
+                String join = date.format(txtjoin.getDate());
+
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1,id);
+                pst.setString(2,uname);
+                pst.setString(3,pass);
+                pst.setString(4,gender);
+                pst.setString(5,birth);
+                pst.setString(6,email);
+                pst.setString(7,aadhaar);
+                pst.setString(8,join);
+                pst.setString(9,number);
+                pst.setString(10,position);
+                pst.setString(11,salary);
+                pst.setString(12,utype);
+                pst.setString(13,address);
+                pst.setBytes(14,userimage);
+                pst.executeUpdate();
+
+                txtuname.setText("");
+                txtpass.setText("");
+                txtgender.setSelectedIndex(-1);
+                txtdob.setDate(null);
+                txtemail.setText("");
+                txtaadhaar.setText("");
+                txtjoin.setDate(null);
+                txtphone.setText("");
+                txtposition.setSelectedIndex(-1);
+                txtsalary.setText("");
+                txtutype.setSelectedIndex(-1);
+                txtaddress.setText("");
+
+                label.setIcon(null);
+                txtuname.requestFocus();
+                UserLoad();
+                autoID();
+               
+                JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ }
+    }//GEN-LAST:event_txtpositionKeyPressed
+
+    private void txtutypeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtutypeKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+     
+         String id = txtid.getText();
+                String uname = txtuname.getText();
+                String pass = txtpass.getText();
+                String gender = txtgender.getSelectedItem().toString();
+                String email = txtemail.getText();
+                String aadhaar =txtaadhaar.getText();
+                String number =txtphone.getText();
+
+                String position = txtposition.getSelectedItem().toString();
+                String salary = txtsalary.getText();
+                String utype = txtutype.getSelectedItem().toString();
+                String address = txtaddress.getText();
+
+                DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                String birth = date.format(txtdob.getDate());
+                String join = date.format(txtjoin.getDate());
+
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1,id);
+                pst.setString(2,uname);
+                pst.setString(3,pass);
+                pst.setString(4,gender);
+                pst.setString(5,birth);
+                pst.setString(6,email);
+                pst.setString(7,aadhaar);
+                pst.setString(8,join);
+                pst.setString(9,number);
+                pst.setString(10,position);
+                pst.setString(11,salary);
+                pst.setString(12,utype);
+                pst.setString(13,address);
+                pst.setBytes(14,userimage);
+                pst.executeUpdate();
+
+                txtuname.setText("");
+                txtpass.setText("");
+                txtgender.setSelectedIndex(-1);
+                txtdob.setDate(null);
+                txtemail.setText("");
+                txtaadhaar.setText("");
+                txtjoin.setDate(null);
+                txtphone.setText("");
+                txtposition.setSelectedIndex(-1);
+                txtsalary.setText("");
+                txtutype.setSelectedIndex(-1);
+                txtaddress.setText("");
+
+                label.setIcon(null);
+                txtuname.requestFocus();
+                UserLoad();
+                autoID();
+               
+                JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ }
+    }//GEN-LAST:event_txtutypeKeyPressed
+
+    private void txtaddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtaddressKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+     
+         String id = txtid.getText();
+                String uname = txtuname.getText();
+                String pass = txtpass.getText();
+                String gender = txtgender.getSelectedItem().toString();
+                String email = txtemail.getText();
+                String aadhaar =txtaadhaar.getText();
+                String number =txtphone.getText();
+
+                String position = txtposition.getSelectedItem().toString();
+                String salary = txtsalary.getText();
+                String utype = txtutype.getSelectedItem().toString();
+                String address = txtaddress.getText();
+
+                DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                String birth = date.format(txtdob.getDate());
+                String join = date.format(txtjoin.getDate());
+
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1,id);
+                pst.setString(2,uname);
+                pst.setString(3,pass);
+                pst.setString(4,gender);
+                pst.setString(5,birth);
+                pst.setString(6,email);
+                pst.setString(7,aadhaar);
+                pst.setString(8,join);
+                pst.setString(9,number);
+                pst.setString(10,position);
+                pst.setString(11,salary);
+                pst.setString(12,utype);
+                pst.setString(13,address);
+                pst.setBytes(14,userimage);
+                pst.executeUpdate();
+
+                txtuname.setText("");
+                txtpass.setText("");
+                txtgender.setSelectedIndex(-1);
+                txtdob.setDate(null);
+                txtemail.setText("");
+                txtaadhaar.setText("");
+                txtjoin.setDate(null);
+                txtphone.setText("");
+                txtposition.setSelectedIndex(-1);
+                txtsalary.setText("");
+                txtutype.setSelectedIndex(-1);
+                txtaddress.setText("");
+
+                label.setIcon(null);
+                txtuname.requestFocus();
+                UserLoad();
+                autoID();
+               
+                JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ }
+    }//GEN-LAST:event_txtaddressKeyPressed
+
+    private void txtsalaryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsalaryKeyPressed
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+     
+         String id = txtid.getText();
+                String uname = txtuname.getText();
+                String pass = txtpass.getText();
+                String gender = txtgender.getSelectedItem().toString();
+                String email = txtemail.getText();
+                String aadhaar =txtaadhaar.getText();
+                String number =txtphone.getText();
+
+                String position = txtposition.getSelectedItem().toString();
+                String salary = txtsalary.getText();
+                String utype = txtutype.getSelectedItem().toString();
+                String address = txtaddress.getText();
+
+                DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+                String birth = date.format(txtdob.getDate());
+                String join = date.format(txtjoin.getDate());
+
+        
+        
+        
+        
+        
+            if(uname.equals("")){
+                 JOptionPane.showMessageDialog(this, "Fill User Field");
+                 return;
+            }
+            else if(pass.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Password");
+                return;
+            }else if(gender.equals("")){
+                JOptionPane.showMessageDialog(this, "Fill Gender");
+                return;
+            }else if (email.equals("")) {
+                JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(aadhaar.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill email");
+                return;
+             }else if(number.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill number");
+                return;
+             }else if(position.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill position");
+                return;
+             }else if(salary.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill salary");
+                return;
+             }else if(utype.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill utype");
+                return;
+             }else if(address.equals("")){
+                    JOptionPane.showMessageDialog(this, "Fill address");
+                return;
+             }
+             
+            try {
+               
+                pst = db.setData("insert into users (id,username,password,gender,dob,emailid,aadhaar,doj,number, position,salary,usertype,address,image)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+                pst.setString(1,id);
+                pst.setString(2,uname);
+                pst.setString(3,pass);
+                pst.setString(4,gender);
+                pst.setString(5,birth);
+                pst.setString(6,email);
+                pst.setString(7,aadhaar);
+                pst.setString(8,join);
+                pst.setString(9,number);
+                pst.setString(10,position);
+                pst.setString(11,salary);
+                pst.setString(12,utype);
+                pst.setString(13,address);
+                pst.setBytes(14,userimage);
+                pst.executeUpdate();
+
+                txtuname.setText("");
+                txtpass.setText("");
+                txtgender.setSelectedIndex(-1);
+                txtdob.setDate(null);
+                txtemail.setText("");
+                txtaadhaar.setText("");
+                txtjoin.setDate(null);
+                txtphone.setText("");
+                txtposition.setSelectedIndex(-1);
+                txtsalary.setText("");
+                txtutype.setSelectedIndex(-1);
+                txtaddress.setText("");
+
+                label.setIcon(null);
+                txtuname.requestFocus();
+                UserLoad();
+                autoID();
+               
+                JOptionPane.showMessageDialog(null,"User added");
+                
+              editbtn.setEnabled(false);
+              deletebtn.setEnabled(false);  
+
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            }
+ }
+    }//GEN-LAST:event_txtsalaryKeyPressed
 
     
 
