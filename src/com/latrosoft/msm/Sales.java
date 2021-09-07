@@ -187,6 +187,7 @@ public class Sales extends javax.swing.JInternalFrame {
 
         try {
 
+         
         /*    int subtotal=Integer.parseInt(txtprice.getText().trim());
             int payment = Integer.parseInt(txtpay.getText().trim());
             int balance = Integer.parseInt(txtbal.getText().trim());  */

@@ -531,9 +531,9 @@ public class Items extends javax.swing.JInternalFrame {
         String Name = txtname.getText();
         int imei1 =Integer.parseInt(txtimei1.getText());    
         int imei2 =Integer.parseInt(txtimei2.getText()); 
-        String Rate = txtrate.getText();
-          String Discount=txtdiscount.getText();
-            int Quantity=Integer.parseInt(txtqty.getText()); 
+        long Rate = Long.parseLong(txtrate.getText());
+        String Discount=txtdiscount.getText();
+        int Quantity=Integer.parseInt(txtqty.getText()); 
           String Brand=txtbrand.getText();
           String Model=txtmodel.getText();
           String Specification=txtspecification.getText();
@@ -548,7 +548,7 @@ public class Items extends javax.swing.JInternalFrame {
             pst.setString(2, Name);
             pst.setInt(3, imei1);
             pst.setInt(4, imei2);
-            pst.setString(5,Rate);
+            pst.setLong(5,Rate);
             pst.setString(6,Discount);
             pst.setInt(7,Quantity);
             pst.setString(8,Brand);
@@ -592,7 +592,7 @@ public class Items extends javax.swing.JInternalFrame {
         String Name = txtname.getText();
         int imei1 =Integer.parseInt(txtimei1.getText());
         int imei2 =Integer.parseInt(txtimei2.getText());
-        String Rate=txtrate.getText();
+        long Rate=Long.parseLong(txtrate.getText());
         String Discount=txtdiscount.getText();
         int Quantity=Integer.parseInt(txtqty.getText()); 
         String Brand =txtbrand.getText();
@@ -608,7 +608,7 @@ public class Items extends javax.swing.JInternalFrame {
             pst.setString(1, Name);
             pst.setInt(2, imei1);
             pst.setInt(3, imei2);
-            pst.setString(4, Rate);
+            pst.setLong(4, Rate);
             pst.setString(5,Discount );
             pst.setInt(6,Quantity);
             pst.setString(7, Brand);

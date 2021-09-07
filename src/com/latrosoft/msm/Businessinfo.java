@@ -8,6 +8,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -35,15 +38,19 @@ public class Businessinfo extends javax.swing.JInternalFrame {
 
    Connection con;
    PreparedStatement pst;
+   DefaultTableModel df;
    
-   
+   ResultSet rs;
       DBHelper db;
     /**
      * Creates new form Business_info
      */
     public Businessinfo() throws ClassNotFoundException, SQLException
     { this.db=new DBHelper();
+     
         initComponents();
+         check();
+      
     }
 
       public static void Businessinfo(String args[]){
@@ -349,6 +356,45 @@ public class Businessinfo extends javax.swing.JInternalFrame {
       
        
     }//GEN-LAST:event_jButton1ActionPerformed
+  void check()
+  {
+        try {
+           
+            int count=0;
+            pst= (PreparedStatement) con.createStatement();
+            String sql="select * from businessinfo where id=?";
+            ResultSet rs=pst.executeQuery(sql);
+            rs.next();
+            count=rs.getInt(1);
+         /* if ( rs.getRow()==1)
+          {
+              jButton2.setEnabled(false);
+              
+          }*/
+            if(count==1)
+            {
+                jButton2.setEnabled(false);
+            }
+            else
+            {
+                jButton2.setEnabled(true);
+            }
+            
+           
+  
+            
+              
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(Businessinfo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch(NullPointerException ex)
+        {
+            JOptionPane.showMessageDialog(this, "Something went wrong");
+        }
+      
+  }
+    
     /*
     
     select ===> query  rowcount=>(1)  add button disable
@@ -374,6 +420,7 @@ public class Businessinfo extends javax.swing.JInternalFrame {
     void add() throws SQLException
     {
         try {
+            
             String name=txtsname.getText();
             String ownername=txtoname.getText();
             String address=txtaddress.getText();

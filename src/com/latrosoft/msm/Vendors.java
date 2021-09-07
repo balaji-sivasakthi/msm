@@ -71,6 +71,7 @@ public class Vendors extends javax.swing.JInternalFrame {
         });
         t1.start();
     }
+   
      public void load() throws SQLException, ClassNotFoundException {
 
         int a;
@@ -985,7 +986,7 @@ public class Vendors extends javax.swing.JInternalFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
           String id=txtid.getText();
         String Name = txtname2.getText();
-         int Number = Integer.parseInt(txtnumber2.getText());
+         long Number = Long.parseLong(txtnumber2.getText());
         String Email = txtemail2.getText();
         String Address = txtaddress2.getText();
  
@@ -998,7 +999,7 @@ public class Vendors extends javax.swing.JInternalFrame {
             pst = db.setData("insert into vendor(id,name,number,email,address,date,time)values(?,?,?,?,?,?,?)");
            pst.setString(1,id);
             pst.setString(2, Name);
-            pst.setInt(3, Number);
+            pst.setLong(3, Number);
             pst.setString(4, Email);
             pst.setString(5, Address);
 
@@ -1030,7 +1031,7 @@ public class Vendors extends javax.swing.JInternalFrame {
 
          String id =df.getValueAt(selected, 0).toString();
         String Name = txtname2.getText();
-        int Number = Integer.parseInt(txtnumber2.getText());
+        long Number = Long.parseLong(txtnumber2.getText());
   
         String Email = txtemail2.getText();
         String Address = txtaddress2.getText();
@@ -1044,7 +1045,7 @@ public class Vendors extends javax.swing.JInternalFrame {
             pst = db.setData("update vendor set name = ?,number = ?,email = ?,address = ?,date=?,time=? where id = ?");
 
             pst.setString(1, Name);
-            pst.setInt(2, Number);
+            pst.setLong(2, Number);
             pst.setString(3, Email);
             pst.setString(4, Address);
             pst.setString(5, Date);
