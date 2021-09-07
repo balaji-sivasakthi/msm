@@ -289,9 +289,18 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_Add_vendorsActionPerformed
 
     private void Add_usersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_usersActionPerformed
-       Users ur = new   Users();
-       this.add(ur);
-       ur.setVisible(true);
+
+        try {
+             Users ur = new Users();
+              ur.setVisible(true);
+                this.add(ur);
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
     }//GEN-LAST:event_Add_usersActionPerformed
 
     private void ReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportActionPerformed
