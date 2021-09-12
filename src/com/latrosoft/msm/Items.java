@@ -111,15 +111,12 @@ public class Items extends javax.swing.JInternalFrame {
                 for (int i = 1; i <= a; i++) {
                     v2.add(rs.getString("itemid"));
                     v2.add(rs.getString("itemname"));
-                    v2.add(rs.getString("itemimei1"));
-                    v2.add(rs.getString("itemimei2"));
+                    v2.add(rs.getString("brand"));
+                    v2.add(rs.getString("model"));
                     v2.add(rs.getString("itemrate"));
                  
                     v2.add(rs.getString("discount"));
-                  
-                           v2.add(rs.getString("quantity"));
-                                  v2.add(rs.getString("brand"));
-                                         v2.add(rs.getString("model"));
+                           v2.add(rs.getString("stock"));
                                            v2.add(rs.getString("specification"));
                     
                 }
@@ -139,11 +136,8 @@ public class Items extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtimei1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -152,8 +146,7 @@ public class Items extends javax.swing.JInternalFrame {
         txtname = new javax.swing.JTextField();
         txtrate = new javax.swing.JTextField();
         txtdiscount = new javax.swing.JTextField();
-        txtimei2 = new javax.swing.JTextField();
-        txtqty = new javax.swing.JTextField();
+        txtstock = new javax.swing.JTextField();
         txtmodel = new javax.swing.JTextField();
         txtbrand = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -182,15 +175,6 @@ public class Items extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(102, 0, 102));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        txtimei1.setBackground(new java.awt.Color(102, 0, 102));
-        txtimei1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtimei1.setForeground(new java.awt.Color(255, 255, 255));
-        txtimei1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtimei1KeyPressed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Item  Rate            :");
@@ -199,21 +183,13 @@ public class Items extends javax.swing.JInternalFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Item Name            :");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Item IMEI 1          :");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Item IMEI 2          :");
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Disount                 :");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Quantity               :");
+        jLabel6.setText("Stock                    :");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -254,21 +230,12 @@ public class Items extends javax.swing.JInternalFrame {
             }
         });
 
-        txtimei2.setBackground(new java.awt.Color(102, 0, 102));
-        txtimei2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtimei2.setForeground(new java.awt.Color(255, 255, 255));
-        txtimei2.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtstock.setBackground(new java.awt.Color(102, 0, 102));
+        txtstock.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtstock.setForeground(new java.awt.Color(255, 255, 255));
+        txtstock.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtimei2KeyPressed(evt);
-            }
-        });
-
-        txtqty.setBackground(new java.awt.Color(102, 0, 102));
-        txtqty.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtqty.setForeground(new java.awt.Color(255, 255, 255));
-        txtqty.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtqtyKeyPressed(evt);
+                txtstockKeyPressed(evt);
             }
         });
 
@@ -302,28 +269,30 @@ public class Items extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtimei1)
-                    .addComponent(txtname)
-                    .addComponent(txtimei2)
-                    .addComponent(txtrate)
-                    .addComponent(txtdiscount)
-                    .addComponent(txtqty)
-                    .addComponent(txtbrand)
-                    .addComponent(txtmodel)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtname, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                            .addComponent(txtrate)
+                            .addComponent(txtdiscount)
+                            .addComponent(txtbrand)
+                            .addComponent(txtmodel)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtstock, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,39 +301,31 @@ public class Items extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtimei1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtimei2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(26, 26, 26)
+                    .addComponent(jLabel8)
+                    .addComponent(txtbrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtmodel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtrate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtdiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtqty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtbrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(txtmodel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                    .addComponent(txtdiscount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtstock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -381,10 +342,14 @@ public class Items extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ItemsID", "ItemName", "ItemIMEI1", "ItemIMEI2", "Rate", "Discount", "Quantity", "Brand", "Model", "Specification"
+                "ItemsID", "ItemName", "Brand", "Model", "Rate", "Discount", "Stock", "Specification"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+            jTable1.getColumnModel().getColumn(7).setResizable(false);
+        }
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Add");
@@ -450,18 +415,22 @@ public class Items extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel10)
                                 .addGap(77, 77, 77)
-                                .addComponent(txtid))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtid)
+                                .addGap(272, 272, 272))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 277, Short.MAX_VALUE)
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(249, 249, 249)
                                 .addComponent(txtdate)
                                 .addGap(78, 78, 78)
-                                .addComponent(txttime))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42))
+                                .addComponent(txttime)
+                                .addGap(42, 42, 42))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -471,9 +440,9 @@ public class Items extends javax.swing.JInternalFrame {
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(36, 36, 36)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,18 +454,18 @@ public class Items extends javax.swing.JInternalFrame {
                     .addComponent(txtid)
                     .addComponent(txtdate)
                     .addComponent(txttime))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         pack();
@@ -511,16 +480,14 @@ public class Items extends javax.swing.JInternalFrame {
         int selected = jTable1.getSelectedRow();
 
         String id =df.getValueAt(selected, 0).toString();
-
         txtname.setText(df.getValueAt(selected, 1).toString());
-        txtimei1.setText(df.getValueAt(selected, 2).toString());
-        txtimei2.setText(df.getValueAt(selected, 3).toString());
+        txtbrand.setText(df.getValueAt(selected, 2).toString());
+        txtmodel.setText(df.getValueAt(selected, 3).toString());
         txtrate.setText(df.getValueAt(selected, 4).toString());
         txtdiscount.setText(df.getValueAt(selected, 5).toString());
-        txtqty.setText(df.getValueAt(selected, 6).toString());
-        txtbrand.setText(df.getValueAt(selected, 7).toString());
-        txtmodel.setText(df.getValueAt(selected, 8).toString());
-        txtspecification.setText(df.getValueAt(selected, 9).toString());
+        txtstock.setText(df.getValueAt(selected, 6).toString());
+       
+        txtspecification.setText(df.getValueAt(selected, 7).toString());
       
         
         jButton1.setEnabled(false);
@@ -529,47 +496,42 @@ public class Items extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          String id=txtid.getText();
         String Name = txtname.getText();
-        int imei1 =Integer.parseInt(txtimei1.getText());    
-        int imei2 =Integer.parseInt(txtimei2.getText()); 
+         String Brand=txtbrand.getText();
+          String Model=txtmodel.getText();
         long Rate = Long.parseLong(txtrate.getText());
         String Discount=txtdiscount.getText();
-        int Quantity=Integer.parseInt(txtqty.getText()); 
-          String Brand=txtbrand.getText();
-          String Model=txtmodel.getText();
+        int Stock=Integer.parseInt(txtstock.getText()); 
           String Specification=txtspecification.getText();
           
 
         try {
             
             
-            pst = db.setData("insert into item(itemid,itemname,itemimei1,itemimei2,itemrate,discount,quantity,brand,model,specification)values(?,?,?,?,?,?,?,?,?,?)");
+            pst = db.setData("insert into item(itemid,itemname,brand,model,itemrate,discount,stock,specification)values(?,?,?,?,?,?,?,?)");
 
             pst.setString(1, id);
             pst.setString(2, Name);
-            pst.setInt(3, imei1);
-            pst.setInt(4, imei2);
+            pst.setString(3,Brand);
+            pst.setString(4,Model);
             pst.setLong(5,Rate);
             pst.setString(6,Discount);
-            pst.setInt(7,Quantity);
-            pst.setString(8,Brand);
-            pst.setString(9,Model);
-            pst.setString(10,Specification);
+            pst.setInt(7,Stock);
+            pst.setString(8,Specification);
             
            
              
             //  pst.setString(6, Time);
             pst.executeUpdate();
             JOptionPane.showMessageDialog(this, "Recorded Successfully");
-
+             
             txtname.setText("");
-            txtimei1.setText("");
-            txtimei2.setText("");
+            txtbrand.setText("");
+            txtmodel.setText("");
             txtrate.setText("");
             txtdiscount.setText("");
             txtspecification.setText("");
-            txtqty.setText("");
-            txtbrand.setText("");
-            txtmodel.setText("");
+            txtstock.setText("");
+            
              
             txtname.requestFocus();
             load();
@@ -590,11 +552,9 @@ public class Items extends javax.swing.JInternalFrame {
         String id =df.getValueAt(selected, 0).toString();
 
         String Name = txtname.getText();
-        int imei1 =Integer.parseInt(txtimei1.getText());
-        int imei2 =Integer.parseInt(txtimei2.getText());
         long Rate=Long.parseLong(txtrate.getText());
         String Discount=txtdiscount.getText();
-        int Quantity=Integer.parseInt(txtqty.getText()); 
+        int Stock=Integer.parseInt(txtstock.getText()); 
         String Brand =txtbrand.getText();
         String Model=txtmodel.getText();
         String Specification=txtspecification.getText();
@@ -604,29 +564,25 @@ public class Items extends javax.swing.JInternalFrame {
         try {
             try {  
 
-            pst = db.setData("update item set itemname = ?,itemimei1 = ?,itemimei2 = ?,itemrate = ?,discount=?,quantity=?,brand=?,model=?,specification=? where itemid = ?");
+            pst = db.setData("update item set itemname = ?,brand=?,model=?,itemrate = ?,discount=?,stock=?,specification=? where itemid = ?");
             pst.setString(1, Name);
-            pst.setInt(2, imei1);
-            pst.setInt(3, imei2);
+            pst.setString(2, Brand);
+            pst.setString(3,Model);
             pst.setLong(4, Rate);
             pst.setString(5,Discount );
-            pst.setInt(6,Quantity);
-            pst.setString(7, Brand);
-            pst.setString(8,Model);
-            pst.setString(9,Specification);
-            pst.setString(10,id);
+            pst.setInt(6,Stock);
+            pst.setString(7,Specification);
+            pst.setString(8,id);
             pst.executeUpdate();
             JOptionPane.showMessageDialog(this, "Updated Successfully");
 
                 
 
             txtname.setText("");
-            txtimei1.setText("");
-            txtimei2.setText("");
             txtrate.setText("");
             txtdiscount.setText("");
             txtspecification.setText("");
-            txtqty.setText("");
+            txtstock.setText("");
             txtbrand.setText("");
             txtmodel.setText("");
              
@@ -647,12 +603,11 @@ public class Items extends javax.swing.JInternalFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
             txtname.setText("");
-            txtimei1.setText("");
-            txtimei2.setText("");
+           
             txtrate.setText("");
             txtdiscount.setText("");
             txtspecification.setText("");
-            txtqty.setText("");
+            txtstock.setText("");
             txtbrand.setText("");
             txtmodel.setText("");
             
@@ -679,12 +634,10 @@ public class Items extends javax.swing.JInternalFrame {
             pst.executeUpdate();
             JOptionPane.showMessageDialog(this, "Record Deleted");
             txtname.setText("");
-            txtimei1.setText("");
-            txtimei2.setText("");
             txtrate.setText("");
             txtdiscount.setText("");
             txtspecification.setText("");
-            txtqty.setText("");
+            txtstock.setText("");
             txtbrand.setText("");
             txtmodel.setText("");
             
@@ -707,22 +660,11 @@ public class Items extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnameKeyPressed
-         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            txtimei1.requestFocus();
-        }
+  if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+  {
+      txtbrand.requestFocus();
+  }
     }//GEN-LAST:event_txtnameKeyPressed
-
-    private void txtimei1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtimei1KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            txtimei2.requestFocus();
-        }
-    }//GEN-LAST:event_txtimei1KeyPressed
-
-    private void txtimei2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtimei2KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-           txtrate.requestFocus();
-        }
-    }//GEN-LAST:event_txtimei2KeyPressed
 
     private void txtrateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtrateKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -732,15 +674,15 @@ public class Items extends javax.swing.JInternalFrame {
 
     private void txtdiscountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdiscountKeyPressed
        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            txtqty.requestFocus();
+            txtstock.requestFocus();
         }
     }//GEN-LAST:event_txtdiscountKeyPressed
 
-    private void txtqtyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtqtyKeyPressed
+    private void txtstockKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtstockKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            txtbrand.requestFocus();
+            txtspecification.requestFocus();
         }
-    }//GEN-LAST:event_txtqtyKeyPressed
+    }//GEN-LAST:event_txtstockKeyPressed
 
     private void txtbrandKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbrandKeyPressed
           if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -750,7 +692,7 @@ public class Items extends javax.swing.JInternalFrame {
 
     private void txtmodelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmodelKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-           txtspecification.requestFocus();
+           txtrate.requestFocus();
         }
     }//GEN-LAST:event_txtmodelKeyPressed
 
@@ -764,8 +706,6 @@ public class Items extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -780,13 +720,11 @@ public class Items extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txtdate;
     private javax.swing.JTextField txtdiscount;
     private javax.swing.JLabel txtid;
-    private javax.swing.JTextField txtimei1;
-    private javax.swing.JTextField txtimei2;
     private javax.swing.JTextField txtmodel;
     public javax.swing.JTextField txtname;
-    private javax.swing.JTextField txtqty;
     private javax.swing.JTextField txtrate;
     private javax.swing.JTextArea txtspecification;
+    private javax.swing.JTextField txtstock;
     private javax.swing.JLabel txttime;
     // End of variables declaration//GEN-END:variables
 }

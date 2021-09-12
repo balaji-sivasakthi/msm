@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -359,26 +360,23 @@ public class Businessinfo extends javax.swing.JInternalFrame {
   void check()
   {
         try {
-           
+           Connection con = null;
             int count=0;
-            pst= (PreparedStatement) con.createStatement();
-            String sql="select * from businessinfo where id=?";
-            ResultSet rs=pst.executeQuery(sql);
-            rs.next();
-            count=rs.getInt(1);
-         /* if ( rs.getRow()==1)
-          {
-              jButton2.setEnabled(false);
-              
-          }*/
-            if(count==1)
+               String sql="select * from businessinfo where id=?";
+            pst = con.prepareStatement(sql);
+            ResultSet rs=pst.executeQuery();
+            if(rs.next())
             {
-                jButton2.setEnabled(false);
+                int sum=Integer.parseInt(rs.getString("count(shopname)"));
+                if(sum==1)
+                {
+                    jButton3.setEnabled(false);
+                }
             }
-            else
-            {
-                jButton2.setEnabled(true);
-            }
+            count=rs.getInt("shopname");
+            System.out.print(count);
+            
+    
             
            
   
@@ -388,11 +386,7 @@ public class Businessinfo extends javax.swing.JInternalFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Businessinfo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        catch(NullPointerException ex)
-        {
-            JOptionPane.showMessageDialog(this, "Something went wrong");
-        }
-      
+       
   }
     
     /*
