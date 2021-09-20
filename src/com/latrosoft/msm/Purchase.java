@@ -29,12 +29,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Hari
  */
-public class Stocks extends javax.swing.JInternalFrame {
+public class Purchase extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Business_info
      */
-    public Stocks() throws SQLException, ClassNotFoundException {
+    public Purchase() throws SQLException, ClassNotFoundException {
           this.db= new DBHelper();
         initComponents();
         Connect();
@@ -78,7 +78,7 @@ public class Stocks extends javax.swing.JInternalFrame {
             con = DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system", "root", "");
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Stocks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -95,7 +95,7 @@ public class Stocks extends javax.swing.JInternalFrame {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(Stocks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
  
@@ -154,7 +154,7 @@ public class Stocks extends javax.swing.JInternalFrame {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(Stocks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -204,7 +204,11 @@ public class Stocks extends javax.swing.JInternalFrame {
     public void add() throws ClassNotFoundException {
 
         try {
-            DateTimeFormatter dt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            
+           
+            pst =  con.prepareStatement("insert into stock(stockid,itemname,vendorname,subtotal,payment,balance,date,time)values(?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            
+          DateTimeFormatter dt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
             LocalDateTime now = LocalDateTime.now();
            // String date = dt.format(now);                                    //
              String date = txtdate.getText();
@@ -214,20 +218,24 @@ public class Stocks extends javax.swing.JInternalFrame {
             long payment = Long.parseLong(txtpay.getText());
             long balance = Long.parseLong(txtbal.getText());
             String time = txttime.getText();
-           
-            pst =  con.prepareStatement("insert into stock(stockid,vendorname,subtotal,payment,balance,date,time)values(?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
-            
-          
+            String iname;
+             for (int i = 0; i < jTable1.getRowCount(); i++) {
+                  
+              iname=(String) jTable1.getValueAt(i, 1);
+             
+              
             pst.setString(1, stockid);
             pst.setString(2, vendorname);
-            pst.setLong(3, subtotal);
-            pst.setLong(4, payment);
-            pst.setLong(5, balance);
-            pst.setString(6, date); 
-            pst.setString(7, time);
+            pst.setString(3,iname);
+            pst.setLong(4, subtotal);
+            pst.setLong(5, payment);
+            pst.setLong(6, balance);
+            pst.setString(7, date); 
+            pst.setString(8, time);
+            
             pst.executeUpdate();
 
-           
+             }
 
            
             pst1 =db.setData("insert into stockitem(stockid,itmid,itemname,brand,model,rate,discount,stockcount,total)values(?,?,?,?,?,?,?,?,?)");
@@ -295,7 +303,7 @@ public class Stocks extends javax.swing.JInternalFrame {
        
             
         } catch (SQLException ex) {
-            Logger.getLogger(Stocks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -778,7 +786,7 @@ public class Stocks extends javax.swing.JInternalFrame {
             
             add();
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Stocks.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Purchase.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

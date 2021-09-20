@@ -249,29 +249,41 @@ public class Sales extends javax.swing.JInternalFrame {
         /*    int subtotal=Integer.parseInt(txtprice.getText().trim());
             int payment = Integer.parseInt(txtpay.getText().trim());
             int balance = Integer.parseInt(txtbal.getText().trim());  */
+  
+           
+
+            
+            pst =con.prepareStatement("insert into sales(salesid,itemname,cusname,subtotal,payment,balance,date,time)values(?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+             String iname;
+            String custname;
+                   
             String salesid=txtid.getText();
             long subtotal = Long.parseLong(txtcost.getText());
             long payment = Long.parseLong( txtpay.getText());
             long balance = Long.parseLong(txtbal.getText());
             String date = txtdate.getText();
             String time=txttime1.getText();
-           
-
             
-            pst =con.prepareStatement("insert into sales(salesid,subtotal,payment,balance,date,time)values(?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
-
+             for (int i = 0; i < jTable1.getRowCount(); i++) {
+                  
+              iname=(String) jTable1.getValueAt(i, 1);
+              custname=(String)  jTable1.getValueAt(i,2);
+              
+              
             pst.setString(1,salesid);
-            pst.setLong(2, subtotal);
-            pst.setLong(3, payment);
-            pst.setLong(4, balance);
-            pst.setString(5, date);
-            pst.setString(6, time);
+            pst.setString(2,iname);
+            pst.setString(3,custname);
+            pst.setLong(4, subtotal);
+            pst.setLong(5, payment);
+            pst.setLong(6, balance);
+            pst.setString(7, date);
+            pst.setString(8, time);
             
 
-            
+          
             pst.executeUpdate();
 
-        
+          }
 
            
 

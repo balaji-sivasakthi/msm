@@ -245,7 +245,7 @@ public class Main extends javax.swing.JFrame {
 
     private void Add_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_stockActionPerformed
         try {
-            Stocks st = new Stocks();
+            Purchase st = new Purchase();
             this.add(st);
             st.setVisible(true);
         } catch (SQLException ex) {

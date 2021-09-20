@@ -1,3 +1,4 @@
+
 package com.latrosoft.msm;
 
 import java.awt.Image;
