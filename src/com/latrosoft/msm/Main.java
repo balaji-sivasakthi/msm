@@ -81,7 +81,7 @@ public class Main extends javax.swing.JFrame {
         });
         Master.add(Business_info);
 
-        Add_stock.setText("Add stock");
+        Add_stock.setText("Purchase");
         Add_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Add_stockActionPerformed(evt);
@@ -89,7 +89,7 @@ public class Main extends javax.swing.JFrame {
         });
         Master.add(Add_stock);
 
-        Add_items.setText("Add items");
+        Add_items.setText("Items");
         Add_items.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Add_itemsActionPerformed(evt);
@@ -308,9 +308,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_ReportActionPerformed
 
     private void Sales_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sales_reportActionPerformed
-        Analytics slreport = new  Analytics();
-       this.add( slreport);
-       slreport.setVisible(true);
+        try {
+            Analytics slreport = new  Analytics();
+            this.add( slreport);
+            slreport.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_Sales_reportActionPerformed
 
     private void SalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalesActionPerformed
@@ -354,9 +360,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_DetailsActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-       Analytics al = new Analytics();
-       this.add( al);
-       al.setVisible(true);
+        try {
+            Analytics al = new Analytics();
+            this.add( al);
+            al.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
      public static void Main(String args[]){

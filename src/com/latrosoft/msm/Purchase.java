@@ -104,19 +104,19 @@ public class Purchase extends javax.swing.JInternalFrame {
      
             
             ResultSet rs;
-            rs = db.getData("select MAX(stockid) from stock");
+            rs = db.getData("select MAX(purid) from purchase");
             
-            rs.getString("MAX(stockid)");
+            rs.getString("MAX(purid)");
             
-            if(rs.getString("MAX(stockid)") == null)
+            if(rs.getString("MAX(purid)") == null)
             {
-                txtid.setText("ST001");
+                txtid.setText("PU001");
             }
             else
             {
-                long id = Long.parseLong(rs.getString("MAX(stockid)").substring(2,rs.getString("MAX(stockid)").length()));
+                long id = Long.parseLong(rs.getString("MAX(purid)").substring(2,rs.getString("MAX(purid)").length()));
                 id++;
-                txtid.setText("ST" + String.format("%03d", id));
+                txtid.setText("PU" + String.format("%03d", id));
         
             }
    
@@ -206,13 +206,13 @@ public class Purchase extends javax.swing.JInternalFrame {
         try {
             
            
-            pst =  con.prepareStatement("insert into stock(stockid,itemname,vendorname,subtotal,payment,balance,date,time)values(?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            pst =  con.prepareStatement("insert into purchase(purid,vendorname,itemname,subtotal,payment,balance,date,time)values(?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             
           DateTimeFormatter dt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
             LocalDateTime now = LocalDateTime.now();
            // String date = dt.format(now);                                    //
              String date = txtdate.getText();
-            String stockid=txtid.getText();
+            String purchaseid=txtid.getText();
             String vendorname = txtvendor.getSelectedItem().toString();
             long subtotal = Long.parseLong(txtcost.getText());
             long payment = Long.parseLong(txtpay.getText());
@@ -224,7 +224,7 @@ public class Purchase extends javax.swing.JInternalFrame {
               iname=(String) jTable1.getValueAt(i, 1);
              
               
-            pst.setString(1, stockid);
+            pst.setString(1, purchaseid);
             pst.setString(2, vendorname);
             pst.setString(3,iname);
             pst.setLong(4, subtotal);
@@ -238,7 +238,7 @@ public class Purchase extends javax.swing.JInternalFrame {
              }
 
            
-            pst1 =db.setData("insert into stockitem(stockid,itmid,itemname,brand,model,rate,discount,stockcount,total)values(?,?,?,?,?,?,?,?,?)");
+            pst1 =db.setData("insert into purchaseitem(purid,itmid,itemname,brand,model,rate,discount,stockcount,total)values(?,?,?,?,?,?,?,?,?)");
            String lastid=txtid.getText();
             String itemID;
             String itemname;
@@ -685,7 +685,7 @@ public class Purchase extends javax.swing.JInternalFrame {
         txttime.setText("Time");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel8.setText("STOCK");
+        jLabel8.setText("PURCHASE");
 
         txtid.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         txtid.setText("jLabel7");
@@ -712,7 +712,7 @@ public class Purchase extends javax.swing.JInternalFrame {
                 .addContainerGap(111, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(660, Short.MAX_VALUE)
+                    .addContainerGap(610, Short.MAX_VALUE)
                     .addComponent(jLabel8)
                     .addGap(613, 613, 613)))
         );
