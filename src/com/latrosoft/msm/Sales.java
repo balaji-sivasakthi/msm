@@ -217,7 +217,7 @@ public class Sales extends javax.swing.JInternalFrame {
 
         txtitemid.setText("");
          txtiname.setText("");
-        txtcusname.setText("");
+  
         txtbrand.setText("");
         txtmodel.setText("");
          txtimei1.setText("");
@@ -253,9 +253,9 @@ public class Sales extends javax.swing.JInternalFrame {
            
 
             
-            pst =con.prepareStatement("insert into sales(salesid,itemname,cusname,subtotal,payment,balance,date,time)values(?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            pst =con.prepareStatement("insert into sales(salesid,cusname,subtotal,payment,balance,date,time)values(?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
              String iname;
-            String custname;
+                 String custname=txtcusname.getText();
                    
             String salesid=txtid.getText();
             long subtotal = Long.parseLong(txtcost.getText());
@@ -263,34 +263,31 @@ public class Sales extends javax.swing.JInternalFrame {
             long balance = Long.parseLong(txtbal.getText());
             String date = txtdate.getText();
             String time=txttime1.getText();
-            
-             for (int i = 0; i < jTable1.getRowCount(); i++) {
-                  
-              iname=(String) jTable1.getValueAt(i, 1);
-              custname=(String)  jTable1.getValueAt(i,2);
+            int n=jTable1.getRowCount();
+      
               
               
             pst.setString(1,salesid);
-            pst.setString(2,iname);
-            pst.setString(3,custname);
-            pst.setLong(4, subtotal);
-            pst.setLong(5, payment);
-            pst.setLong(6, balance);
-            pst.setString(7, date);
-            pst.setString(8, time);
+           
+            pst.setString(2,custname);
+            pst.setLong(3, subtotal);
+            pst.setLong(4, payment);
+            pst.setLong(5, balance);
+            pst.setString(6, date);
+            pst.setString(7, time);
             
 
           
             pst.executeUpdate();
 
-          }
+          
 
            
 
            
 
             
-            pst1 =db.setData("insert into salesitem(salesid,itmid,itemname,customername,brand,model,imei1,imei2,rate,discount,stockcount,total)values(?,?,?,?,?,?,?,?,?,?,?,?)");
+            pst1 =db.setData("insert into salesitem(salesid,itmid,itemname,customername,brand,model,imei1,imei2,rate,discount,stockcount,total,date,time)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             String  itmid;
             String lastid=txtid.getText();
             String itemname;
@@ -302,6 +299,7 @@ public class Sales extends javax.swing.JInternalFrame {
             long rate;
             int discount;
             long  stockcount;
+            
      
                
             long Total = 0;
@@ -331,6 +329,8 @@ public class Sales extends javax.swing.JInternalFrame {
                 pst1.setInt(10,discount);
                 pst1.setLong(11,stockcount);
                 pst1.setLong(12,Total);
+                pst1.setString(13, date);
+                pst1.setString(14, time);
               
                 pst1.executeUpdate();
 
@@ -916,7 +916,7 @@ public class Sales extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-       df = (DefaultTableModel) jTable1.getModel();
+      /* df = (DefaultTableModel) jTable1.getModel();
 
         int selected = jTable1.getSelectedRow();
 
@@ -934,6 +934,7 @@ public class Sales extends javax.swing.JInternalFrame {
         
 
         jButton2.setEnabled(false);
+*/
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void txtdiscountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdiscountActionPerformed

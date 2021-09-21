@@ -206,44 +206,45 @@ public class Purchase extends javax.swing.JInternalFrame {
         try {
             
            
-            pst =  con.prepareStatement("insert into purchase(purid,vendorname,itemname,subtotal,payment,balance,date,time)values(?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            pst =  con.prepareStatement("insert into purchase(purid,vendorname,subtotal,payment,balance,date,time)values(?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             
           DateTimeFormatter dt = DateTimeFormatter.ofPattern("yyyy/MM/dd");
             LocalDateTime now = LocalDateTime.now();
            // String date = dt.format(now);                                    //
              String date = txtdate.getText();
             String purchaseid=txtid.getText();
-            String vendorname = txtvendor.getSelectedItem().toString();
+           String venname=txtvendor.getSelectedItem().toString();
             long subtotal = Long.parseLong(txtcost.getText());
             long payment = Long.parseLong(txtpay.getText());
             long balance = Long.parseLong(txtbal.getText());
             String time = txttime.getText();
-            String iname;
-             for (int i = 0; i < jTable1.getRowCount(); i++) {
+          
+           
                   
-              iname=(String) jTable1.getValueAt(i, 1);
-             
+           
+             pst=db.setData("insert into purchase(purid,vendorname,subtotal,payment,balance,date,time)values(?,?,?,?,?,?,?)");
               
             pst.setString(1, purchaseid);
-            pst.setString(2, vendorname);
-            pst.setString(3,iname);
-            pst.setLong(4, subtotal);
-            pst.setLong(5, payment);
-            pst.setLong(6, balance);
-            pst.setString(7, date); 
-            pst.setString(8, time);
+            pst.setString(2, venname);
+            
+            pst.setLong(3, subtotal);
+            pst.setLong(4, payment);
+            pst.setLong(5, balance);
+            pst.setString(6, date); 
+            pst.setString(7, time);
             
             pst.executeUpdate();
 
-             }
+            
 
            
-            pst1 =db.setData("insert into purchaseitem(purid,itmid,itemname,brand,model,rate,discount,stockcount,total)values(?,?,?,?,?,?,?,?,?)");
+            pst1 =db.setData("insert into purchaseitem(purid,itmid,itemname,brand,model,rate,discount,stockcount,total,date,time)values(?,?,?,?,?,?,?,?,?,?,?)");
            String lastid=txtid.getText();
             String itemID;
             String itemname;
              String brand;
              String model;
+            
              long rate;
              int discount;
              int stockcount;
@@ -272,6 +273,8 @@ public class Purchase extends javax.swing.JInternalFrame {
                 pst1.setInt(7, discount);
                 pst1.setInt(8, stockcount);
                 pst1.setLong(9, total);
+                pst1.setString(10, date);
+                pst1.setString(11, time);
                 pst1.executeUpdate();
 
             }
