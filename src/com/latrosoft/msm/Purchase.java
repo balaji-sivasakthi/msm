@@ -238,13 +238,13 @@ public class Purchase extends javax.swing.JInternalFrame {
             
 
            
-            pst1 =db.setData("insert into purchaseitem(purid,itmid,itemname,brand,model,rate,discount,stockcount,total,date,time)values(?,?,?,?,?,?,?,?,?,?,?)");
+            pst1 =db.setData("insert into purchaseitem(purid,itmid,itemname,vendorname,brand,model,rate,discount,stockcount,total,date,time)values(?,?,?,?,?,?,?,?,?,?,?,?)");
            String lastid=txtid.getText();
             String itemID;
             String itemname;
              String brand;
              String model;
-            
+            String vendorname=txtvendor.getSelectedItem().toString();
              long rate;
              int discount;
              int stockcount;
@@ -267,14 +267,15 @@ public class Purchase extends javax.swing.JInternalFrame {
                 pst1.setString(2, itemID);
                
                 pst1.setString(3 ,itemname);
-                pst1.setString(4, brand);
-                pst1.setString(5, model);
-                pst1.setLong(6,rate);
-                pst1.setInt(7, discount);
-                pst1.setInt(8, stockcount);
-                pst1.setLong(9, total);
-                pst1.setString(10, date);
-                pst1.setString(11, time);
+                pst1.setString(4,vendorname);
+                pst1.setString(5, brand);
+                pst1.setString(6, model);
+                pst1.setLong(7,rate);
+                pst1.setInt(8, discount);
+                pst1.setInt(9, stockcount);
+                pst1.setLong(10, total);
+                pst1.setString(11, date);
+                pst1.setString(12, time);
                 pst1.executeUpdate();
 
             }

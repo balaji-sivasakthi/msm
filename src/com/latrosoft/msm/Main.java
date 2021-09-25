@@ -226,7 +226,7 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Stock_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Stock_reportActionPerformed
-       StockReport streport = new  StockReport();
+       PurchaseReport streport = new  PurchaseReport();
        this.add( streport);
        streport.setVisible(true);
     }//GEN-LAST:event_Stock_reportActionPerformed
