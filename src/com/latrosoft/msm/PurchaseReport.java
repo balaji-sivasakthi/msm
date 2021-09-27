@@ -173,7 +173,7 @@ public class PurchaseReport extends javax.swing.JInternalFrame {
         jPanel1.repaint();
         jPanel1.revalidate();
         
-        JasperDesign jdesign=JRXmlLoader.load("D:\\My First app\\MobileShop\\src\\com\\latrosoft\\msm\\PurchaseReport.jrxml");
+        JasperDesign jdesign=JRXmlLoader.load("/home/nishanth/NetBeansProjects/msm/src/com/latrosoft/msm/PurchaseReport.jrxml");
             JasperReport jreport =JasperCompileManager.compileReport(jdesign);
             
             JasperPrint jprint=JasperFillManager.fillReport(jreport, a,con);
