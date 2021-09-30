@@ -1,14 +1,25 @@
 package com.latrosoft.msm;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.swing.JRViewer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
@@ -129,6 +140,43 @@ public class Analytics extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system","root", "");
+            String itemname=txtitemname.getText();
+          SimpleDateFormat date_format1=new SimpleDateFormat("yyyy-MM-dd");
+        String fdate=date_format1.format(txtfdate.getDate());
+        
+        SimpleDateFormat date_format2=new SimpleDateFormat("yyyy-MM-dd");
+        String ldate=date_format1.format(txttodate.getDate());
+        
+
+            HashMap a=new HashMap();
+            a.put("itemname", itemname);
+            a.put("fromdate",fdate);
+            a.put("todate", ldate);
+            
+
+            jPanel1.removeAll();
+            jPanel1.repaint();
+            jPanel1.revalidate();
+
+            JasperDesign jdesign=JRXmlLoader.load("D:\\My First app\\MobileShop\\src\\com\\latrosoft\\msm\\AnalyticsPurchase.jrxml");
+            JasperReport jreport =JasperCompileManager.compileReport(jdesign);
+
+            JasperPrint jprint=JasperFillManager.fillReport(jreport, a,con);
+
+            JRViewer v= new JRViewer(jprint);
+            jPanel1.setLayout(new BorderLayout());
+            jPanel1.add(v);
+
+        } catch (JRException ex) {
+            Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
+        }
      
            /*  DefaultCategoryDataset dcd =new  DefaultCategoryDataset();
            dcd.addValue(70.80, "Marks", "Nishanth");

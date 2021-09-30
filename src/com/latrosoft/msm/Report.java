@@ -30,13 +30,13 @@ import net.sf.jasperreports.swing.JRViewer;
  *
  * @author Hari
  */
-public class PurchaseReport extends javax.swing.JInternalFrame {
+public class Report extends javax.swing.JInternalFrame {
  Connection con;
  PreparedStatement pst;
     /**
      * Creates new form StockReport
      */
-    public PurchaseReport() {
+    public Report() {
         initComponents();
     }
      public static void StockReport(String args[]){
@@ -63,16 +63,17 @@ public class PurchaseReport extends javax.swing.JInternalFrame {
         txtfromdate = new com.toedter.calendar.JDateChooser();
         txttodate = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Stock Report");
-        setPreferredSize(new java.awt.Dimension(773, 692));
+        setPreferredSize(new java.awt.Dimension(772, 692));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("STOCK REPORT");
+        jLabel1.setText("REPORT");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("From Date");
@@ -80,7 +81,7 @@ public class PurchaseReport extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("To Date");
 
-        jButton1.setText("Find");
+        jButton1.setText("PurchaseReport");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -97,56 +98,63 @@ public class PurchaseReport extends javax.swing.JInternalFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 527, Short.MAX_VALUE)
+            .addGap(0, 503, Short.MAX_VALUE)
         );
+
+        jButton2.setText("SalesReport");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(jLabel2)
-                .addGap(35, 35, 35)
-                .addComponent(txtfromdate, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(32, 32, 32)
-                .addComponent(txttodate, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(351, 351, 351))
+                .addGap(0, 433, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(357, 357, 357))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(jLabel2)
+                        .addGap(31, 31, 31)
+                        .addComponent(txtfromdate, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(92, 92, 92)
+                        .addComponent(jLabel3)
+                        .addGap(52, 52, 52)
+                        .addComponent(txttodate, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(290, 290, 290)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(txttodate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfromdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel2)))
-                .addGap(9, 9, 9)
-                .addComponent(jButton1)
+                    .addComponent(txttodate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtfromdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(11, 11, 11))
         );
 
         pack();
@@ -173,7 +181,7 @@ public class PurchaseReport extends javax.swing.JInternalFrame {
         jPanel1.repaint();
         jPanel1.revalidate();
         
-        JasperDesign jdesign=JRXmlLoader.load("/home/nishanth/NetBeansProjects/msm/src/com/latrosoft/msm/PurchaseReport.jrxml");
+        JasperDesign jdesign=JRXmlLoader.load("D:\\My First app\\MobileShop\\src\\com\\latrosoft\\msm\\PurchaseReport.jrxml");
             JasperReport jreport =JasperCompileManager.compileReport(jdesign);
             
             JasperPrint jprint=JasperFillManager.fillReport(jreport, a,con);
@@ -181,17 +189,18 @@ public class PurchaseReport extends javax.swing.JInternalFrame {
             JRViewer v= new JRViewer(jprint);
             jPanel1.setLayout(new BorderLayout());
             jPanel1.add(v);
+            
              
             
         
         
      
         } catch (JRException ex) {
-            Logger.getLogger(PurchaseReport.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(PurchaseReport.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(PurchaseReport.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
         }
             
       
@@ -203,9 +212,46 @@ public class PurchaseReport extends javax.swing.JInternalFrame {
     
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system","root", "");
+            SimpleDateFormat date_format1=new SimpleDateFormat("yyyy-MM-dd");
+            String fdate=date_format1.format(txtfromdate.getDate());
+
+            SimpleDateFormat date_format2=new SimpleDateFormat("yyyy-MM-dd");
+            String ldate=date_format1.format(txttodate.getDate());
+
+            HashMap a=new HashMap();
+            a.put("fromdate", fdate);
+            a.put("todate", ldate);
+
+            jPanel1.removeAll();
+            jPanel1.repaint();
+            jPanel1.revalidate();
+
+            JasperDesign jdesign=JRXmlLoader.load("D:\\My First app\\MobileShop\\src\\com\\latrosoft\\msm\\SalesReport.jrxml");
+            JasperReport jreport =JasperCompileManager.compileReport(jdesign);
+
+            JasperPrint jprint=JasperFillManager.fillReport(jreport, a,con);
+
+            JRViewer v= new JRViewer(jprint);
+            jPanel1.setLayout(new BorderLayout());
+            jPanel1.add(v);
+
+        } catch (JRException ex) {
+            Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Report.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

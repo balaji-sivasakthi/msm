@@ -24,6 +24,12 @@ public class Main extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void CusReport()
+    {
+        CustomerReport cusreport=new CustomerReport();
+        cusreport.setVisible(true);
+        jDesktopPane1.add(cusreport);
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -37,6 +43,7 @@ public class Main extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         Master = new javax.swing.JMenu();
         Business_info = new javax.swing.JMenuItem();
@@ -50,7 +57,7 @@ public class Main extends javax.swing.JFrame {
         Return = new javax.swing.JMenuItem();
         Report = new javax.swing.JMenu();
         Stock_report = new javax.swing.JMenuItem();
-        Sales_report = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         Phone = new javax.swing.JMenu();
         Details = new javax.swing.JMenuItem();
         Analytics = new javax.swing.JMenu();
@@ -65,6 +72,17 @@ public class Main extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1362, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 749, Short.MAX_VALUE)
+        );
 
         Master.setText("Master");
         Master.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +174,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        Stock_report.setText("Stock report");
+        Stock_report.setText("Report");
         Stock_report.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Stock_reportActionPerformed(evt);
@@ -164,13 +182,13 @@ public class Main extends javax.swing.JFrame {
         });
         Report.add(Stock_report);
 
-        Sales_report.setText("Sales report");
-        Sales_report.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setText("Customer Report");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Sales_reportActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        Report.add(Sales_report);
+        Report.add(jMenuItem2);
 
         jMenuBar1.add(Report);
 
@@ -214,11 +232,13 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1368, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 749, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
 
         pack();
@@ -226,9 +246,10 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Stock_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Stock_reportActionPerformed
-       PurchaseReport streport = new  PurchaseReport();
+       Report streport = new  Report();
        this.add( streport);
        streport.setVisible(true);
+        jDesktopPane1.add(streport);
     }//GEN-LAST:event_Stock_reportActionPerformed
 
     private void Business_infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Business_infoActionPerformed
@@ -236,6 +257,7 @@ public class Main extends javax.swing.JFrame {
             Businessinfo binfo = new  Businessinfo();
             this.add(binfo);
             binfo.setVisible(true);
+            jDesktopPane1.add(binfo);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -248,6 +270,7 @@ public class Main extends javax.swing.JFrame {
             Purchase st = new Purchase();
             this.add(st);
             st.setVisible(true);
+            jDesktopPane1.add(st);
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -264,6 +287,7 @@ public class Main extends javax.swing.JFrame {
             Items it = new Items();
             this.add(it);
             it.setVisible(true);
+            jDesktopPane1.add(it);
            
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -279,6 +303,7 @@ public class Main extends javax.swing.JFrame {
             
               vn.setVisible(true);
                 this.add(vn);
+                jDesktopPane1.add(vn);
      
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -294,6 +319,8 @@ public class Main extends javax.swing.JFrame {
              Users ur = new Users();
               ur.setVisible(true);
                 this.add(ur);
+                 jDesktopPane1.add(ur);
+                
      
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -306,18 +333,6 @@ public class Main extends javax.swing.JFrame {
     private void ReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportActionPerformed
        
     }//GEN-LAST:event_ReportActionPerformed
-
-    private void Sales_reportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sales_reportActionPerformed
-        try {
-            Analytics slreport = new  Analytics();
-            this.add( slreport);
-            slreport.setVisible(true);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_Sales_reportActionPerformed
 
     private void SalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalesActionPerformed
          
@@ -340,6 +355,7 @@ public class Main extends javax.swing.JFrame {
             Sales sl = new  Sales();
             this.add( sl);
             sl.setVisible(true);
+             jDesktopPane1.add(sl);
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -351,12 +367,14 @@ public class Main extends javax.swing.JFrame {
          ReturnItems ri = new   ReturnItems();
        this.add( ri);
        ri.setVisible(true);
+        jDesktopPane1.add(ri);
     }//GEN-LAST:event_ReturnActionPerformed
 
     private void DetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DetailsActionPerformed
     PhoneDetails pd = new PhoneDetails();
        this.add( pd);
        pd.setVisible(true);
+        jDesktopPane1.add(pd);
     }//GEN-LAST:event_DetailsActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -364,12 +382,17 @@ public class Main extends javax.swing.JFrame {
             Analytics al = new Analytics();
             this.add( al);
             al.setVisible(true);
+             jDesktopPane1.add(al);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+       this.CusReport();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
      public static void Main(String args[]){
      
@@ -422,13 +445,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu Return_item;
     private javax.swing.JMenuItem Sale;
     private javax.swing.JMenu Sales;
-    private javax.swing.JMenuItem Sales_report;
     private javax.swing.JMenuItem Stock_report;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 
