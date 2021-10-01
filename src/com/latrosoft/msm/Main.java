@@ -22,6 +22,7 @@ public class Main extends javax.swing.JFrame {
     /** Creates new form Main */
     public Main() {
         initComponents();
+        jMenuItem3.setEnabled(false);
     }
 
     public void CusReport()
