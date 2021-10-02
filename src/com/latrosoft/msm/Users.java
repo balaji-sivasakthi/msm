@@ -30,9 +30,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 public class Users extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form User1
-     */
     
     
     
