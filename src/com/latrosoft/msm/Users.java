@@ -1543,7 +1543,8 @@ public class Users extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtaadhaarActionPerformed
 
     private void txtemailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtemailKeyPressed
- if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+ 
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
      
          String id = txtid.getText();
                 String uname = txtuname.getText();
@@ -1645,6 +1646,7 @@ public class Users extends javax.swing.JInternalFrame {
 
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(Users.class.getName()).log(Level.SEVERE, null, ex);
+            }catch(NullPointerException e){
             }
  }
     }//GEN-LAST:event_txtemailKeyPressed
