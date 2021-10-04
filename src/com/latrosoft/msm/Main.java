@@ -71,6 +71,7 @@ public class Main extends javax.swing.JFrame {
         );
 
         Master.setText("Master");
+        Master.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Master.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MasterActionPerformed(evt);
@@ -78,6 +79,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         Business_info.setText("Business info");
+        Business_info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Business_info.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Business_infoActionPerformed(evt);
@@ -86,6 +88,7 @@ public class Main extends javax.swing.JFrame {
         Master.add(Business_info);
 
         Add_stock.setText("Purchase");
+        Add_stock.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Add_stock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Add_stockActionPerformed(evt);
@@ -94,6 +97,7 @@ public class Main extends javax.swing.JFrame {
         Master.add(Add_stock);
 
         Add_items.setText("Items");
+        Add_items.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Add_items.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Add_itemsActionPerformed(evt);
@@ -102,6 +106,7 @@ public class Main extends javax.swing.JFrame {
         Master.add(Add_items);
 
         Add_vendors.setText("Add vendors");
+        Add_vendors.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Add_vendors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Add_vendorsActionPerformed(evt);
@@ -110,6 +115,7 @@ public class Main extends javax.swing.JFrame {
         Master.add(Add_vendors);
 
         Add_users.setText("Add users");
+        Add_users.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Add_users.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Add_usersActionPerformed(evt);
@@ -120,6 +126,7 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(Master);
 
         Sales.setText("Sales");
+        Sales.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Sales.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalesActionPerformed(evt);
@@ -127,6 +134,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         Sale.setText("Sale");
+        Sale.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Sale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SaleActionPerformed(evt);
@@ -137,6 +145,7 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(Sales);
 
         Return_item.setText("Return item");
+        Return_item.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Return_item.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Return_itemActionPerformed(evt);
@@ -144,6 +153,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         Return.setText("Return");
+        Return.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Return.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReturnActionPerformed(evt);
@@ -154,6 +164,7 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(Return_item);
 
         Report.setText("Report");
+        Report.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Report.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReportActionPerformed(evt);
@@ -161,6 +172,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         Stock_report.setText("Report");
+        Stock_report.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Stock_report.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Stock_reportActionPerformed(evt);
@@ -169,6 +181,7 @@ public class Main extends javax.swing.JFrame {
         Report.add(Stock_report);
 
         jMenuItem2.setText("Customer Report");
+        jMenuItem2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -179,6 +192,7 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1.add(Report);
 
         Analytics.setText("Analytics");
+        Analytics.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Analytics.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AnalyticsActionPerformed(evt);
@@ -186,6 +200,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         jMenuItem3.setText("Analytics");
+        jMenuItem3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);

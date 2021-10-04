@@ -111,6 +111,7 @@ public class Businessinfo extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Business_info");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -198,6 +199,7 @@ public class Businessinfo extends javax.swing.JInternalFrame {
 
         jButton1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jButton1.setText("Find");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -326,6 +328,7 @@ public class Businessinfo extends javax.swing.JInternalFrame {
 
         jButton2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jButton2.setText("Close");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -334,6 +337,7 @@ public class Businessinfo extends javax.swing.JInternalFrame {
 
         jButton3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jButton3.setText("Add");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -342,6 +346,7 @@ public class Businessinfo extends javax.swing.JInternalFrame {
 
         jButton4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jButton4.setText("Clear");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -365,6 +370,7 @@ public class Businessinfo extends javax.swing.JInternalFrame {
 
         txtdelete.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         txtdelete.setText("Delete");
+        txtdelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         txtdelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtdeleteActionPerformed(evt);

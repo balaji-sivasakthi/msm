@@ -47,6 +47,8 @@ public class Items extends javax.swing.JInternalFrame {
         showTime();
         load();
         autoID();
+        
+
     }
     
      public static void Items(String args[]){
@@ -166,6 +168,7 @@ public class Items extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(102, 0, 102));
         setClosable(true);
+        setForeground(new java.awt.Color(255, 255, 255));
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
@@ -353,6 +356,7 @@ public class Items extends javax.swing.JInternalFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Add");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -361,6 +365,7 @@ public class Items extends javax.swing.JInternalFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Close");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -369,6 +374,7 @@ public class Items extends javax.swing.JInternalFrame {
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("Edit");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -377,6 +383,7 @@ public class Items extends javax.swing.JInternalFrame {
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton4.setText("Delete");
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -385,6 +392,7 @@ public class Items extends javax.swing.JInternalFrame {
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton5.setText("Clear");
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -397,10 +405,14 @@ public class Items extends javax.swing.JInternalFrame {
         txttime.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txttime.setText("Time");
 
+        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Item ID");
 
+        txtid.setBackground(new java.awt.Color(0, 0, 0));
         txtid.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        txtid.setForeground(new java.awt.Color(255, 255, 255));
         txtid.setText("jLabel7");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

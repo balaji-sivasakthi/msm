@@ -75,7 +75,6 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         showpass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        showpass.setIcon(new javax.swing.ImageIcon("K:\\Images\\Icons\\eye_24px.png")); // NOI18N
         showpass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 showpassMouseClicked(evt);
@@ -90,7 +89,6 @@ public class Login extends javax.swing.JFrame {
         showpass.setBounds(900, 360, 20, 40);
 
         hidepass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        hidepass.setIcon(new javax.swing.ImageIcon("K:\\Images\\Icons\\invisible_23px.png")); // NOI18N
         hidepass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hidepassMouseClicked(evt);
@@ -166,6 +164,7 @@ public class Login extends javax.swing.JFrame {
 
         loginbtn.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         loginbtn.setText("Login");
+        loginbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         loginbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginbtnActionPerformed(evt);

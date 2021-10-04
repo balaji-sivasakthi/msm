@@ -449,6 +449,7 @@ public class Sales extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("Sales Report");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         txttime.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
@@ -516,6 +517,7 @@ public class Sales extends javax.swing.JInternalFrame {
         });
 
         jButton1.setText("Add");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -659,6 +661,7 @@ public class Sales extends javax.swing.JInternalFrame {
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton6.setText("Print");
+        jButton6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
