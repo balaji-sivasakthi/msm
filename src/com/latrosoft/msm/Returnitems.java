@@ -21,10 +21,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
  
 
-public class ReturnItems extends javax.swing.JInternalFrame {
+public class Returnitems extends javax.swing.JInternalFrame {
     DBHelper db;
  
-    public ReturnItems() throws SQLException ,ClassNotFoundException{
+    public Returnitems() throws SQLException ,ClassNotFoundException{
           this.db= new DBHelper();
         initComponents();
         Connect();
@@ -80,7 +80,7 @@ public class ReturnItems extends javax.swing.JInternalFrame {
             con = DriverManager.getConnection("jdbc:mysql://localhost/mobile_erp_system", "root", "");
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ReturnItems.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Returnitems.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -125,7 +125,7 @@ public class ReturnItems extends javax.swing.JInternalFrame {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(ReturnItems.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Returnitems.class.getName()).log(Level.SEVERE, null, ex);
         }
      }
 

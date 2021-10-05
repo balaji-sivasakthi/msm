@@ -366,7 +366,7 @@ public class Main extends javax.swing.JFrame {
     private void ReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReturnActionPerformed
       try {
 
-      ReturnItems ri = new ReturnItems();
+      Returnitems ri = new Returnitems();
       this.add( ri);
       ri.setVisible(true);
        jDesktopPane1.add(ri);
