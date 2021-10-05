@@ -5,6 +5,7 @@
  */
 package com.latrosoft.msm;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -30,7 +31,7 @@ public class DBHelper {
     PreparedStatement pst2;
     
     
-    public DBHelper() throws ClassNotFoundException,SQLException{
+    public DBHelper() throws ClassNotFoundException,SQLException,CommunicationsException{
     
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(dbUrl, username, password);

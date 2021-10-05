@@ -2,6 +2,7 @@ package com.latrosoft.msm;
 
 
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -285,14 +286,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_loginbtnActionPerformed
 
     
-    public static void main(String args[]) {
-       
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
-    }
+   
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel hidepass;
