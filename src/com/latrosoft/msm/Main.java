@@ -380,22 +380,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_ReturnActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        try {
-            Analytics al = new Analytics();
-            this.add( al);
-            al.setVisible(true);
-             jDesktopPane1.add(al);
-             
-                if(role != "Admin"){
-                 this.add(al);
-                 al.setVisible(false);
-               
-          } 
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

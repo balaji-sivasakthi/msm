@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,7 +44,7 @@ public class Businessinfo extends javax.swing.JInternalFrame {
    Connection con;
    PreparedStatement pst;
    DefaultTableModel df;
-   
+   PreparedStatement pst1;
    ResultSet rs;
       DBHelper db;
     /**
@@ -75,16 +76,16 @@ public class Businessinfo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         txtoname = new javax.swing.JTextField();
         txtsname = new javax.swing.JTextField();
         txtemail = new javax.swing.JTextField();
@@ -95,17 +96,19 @@ public class Businessinfo extends javax.swing.JInternalFrame {
         txtgstin = new javax.swing.JTextField();
         txtgst = new javax.swing.JTextField();
         txtphoto = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jLabel22 = new javax.swing.JLabel();
         txtid = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         txtdelete = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 0, 51));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -113,41 +116,54 @@ public class Businessinfo extends javax.swing.JInternalFrame {
         setTitle("Business_info");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
+        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel2.setText("Shop Name                 :");
+        jLabel13.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Shop Name                 :");
 
-        jLabel3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel3.setText("Owner Name              :");
+        jLabel14.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Owner Name              :");
 
-        jLabel4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel4.setText("Email                           :");
+        jLabel15.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Email                           :");
 
-        jLabel5.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel5.setText("Address                      :");
+        jLabel16.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Address                      :");
 
-        jLabel6.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel6.setText("Number                       :");
+        jLabel17.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("Number                       :");
 
-        jLabel7.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel7.setText("Gst                             :");
+        jLabel18.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Gst                             :");
 
-        jLabel9.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel9.setText("branch                        :");
+        jLabel19.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("branch                        :");
 
-        jLabel10.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel10.setText("Website                     :");
+        jLabel20.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("Website                     :");
 
-        jLabel11.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel11.setText("Gst In                        :");
+        jLabel21.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("Gst In                        :");
 
+        txtoname.setForeground(new java.awt.Color(0, 0, 51));
         txtoname.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtonameKeyPressed(evt);
             }
         });
 
+        txtsname.setForeground(new java.awt.Color(0, 0, 51));
         txtsname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtsnameActionPerformed(evt);
@@ -159,83 +175,96 @@ public class Businessinfo extends javax.swing.JInternalFrame {
             }
         });
 
+        txtemail.setForeground(new java.awt.Color(0, 0, 51));
         txtemail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtemailKeyPressed(evt);
             }
         });
 
+        txtaddress.setForeground(new java.awt.Color(0, 0, 51));
         txtaddress.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtaddressKeyPressed(evt);
             }
         });
 
+        txtwebsite.setForeground(new java.awt.Color(0, 0, 51));
         txtwebsite.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtwebsiteKeyPressed(evt);
             }
         });
 
+        txtnumber.setForeground(new java.awt.Color(0, 0, 51));
         txtnumber.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtnumberKeyPressed(evt);
             }
         });
 
+        txtbranch.setForeground(new java.awt.Color(0, 0, 51));
         txtbranch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtbranchKeyPressed(evt);
             }
         });
 
+        txtgstin.setForeground(new java.awt.Color(0, 0, 51));
+
+        txtgst.setForeground(new java.awt.Color(0, 0, 51));
         txtgst.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtgstKeyPressed(evt);
             }
         });
 
-        txtphoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtphoto.setBackground(new java.awt.Color(255, 255, 255));
+        txtphoto.setForeground(new java.awt.Color(255, 255, 255));
+        txtphoto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jButton1.setText("Find");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton5.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(0, 0, 51));
+        jButton5.setText("Find");
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jLabel12.setText("ID                                 :");
+        jLabel22.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("ID                                 :");
 
+        txtid.setForeground(new java.awt.Color(0, 0, 51));
         txtid.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtidKeyPressed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(41, 41, 41)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtemail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtnumber, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtbranch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,87 +272,88 @@ public class Businessinfo extends javax.swing.JInternalFrame {
                                     .addComponent(txtwebsite, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtgstin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtoname, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtsname, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                         .addComponent(txtphoto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(14, 14, 14))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jButton1)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jButton5)
                                         .addGap(40, 40, 40))))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel10))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel20))
                         .addContainerGap())))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
-                                .addComponent(jLabel12)
+                                .addComponent(jLabel22)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
+                                .addComponent(jLabel13)
                                 .addGap(25, 25, 25))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtsname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
                             .addComponent(txtoname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(txtphoto, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
                             .addComponent(txtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton5)))
                 .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
                     .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
                     .addComponent(txtnumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
                     .addComponent(txtbranch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
                     .addComponent(txtwebsite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
                     .addComponent(txtgst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
                     .addComponent(txtgstin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("BUSINESS INFO");
 
         jButton2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -344,6 +374,17 @@ public class Businessinfo extends javax.swing.JInternalFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         jButton4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jButton4.setText("Clear");
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -358,7 +399,7 @@ public class Businessinfo extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "ID", "ShopName", "OwnerName", "Address", "Email", "Number", "Branch", "Website", "GST", "GST In"
+                "ID", "ShopName", "OwnerName", "Address", "Email", "Number", "Branch", "Website", "GST", "GST In", "Image"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -398,10 +439,15 @@ public class Businessinfo extends javax.swing.JInternalFrame {
                                 .addGap(70, 70, 70)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,7 +456,7 @@ public class Businessinfo extends javax.swing.JInternalFrame {
                 .addComponent(jLabel8)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -418,11 +464,198 @@ public class Businessinfo extends javax.swing.JInternalFrame {
                     .addComponent(jButton4)
                     .addComponent(jButton3)
                     .addComponent(txtdelete))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        txtsname.setText("");
+        txtoname.setText("");
+        txtid.setText("");
+        txtaddress.setText("");
+        txtemail.setText("");
+        txtnumber.setText("");
+        txtbranch.setText("");
+        txtwebsite.setText("");
+        txtgst.setText("");
+        txtgstin.setText("");
+        txtphoto.setText("");
+        txtsname.requestFocus();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void txtdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdeleteActionPerformed
+        try {
+            df = (DefaultTableModel) jTable1.getModel();
+            int selected = jTable1.getSelectedRow();
+            String id = df.getValueAt(selected, 0).toString();
+            pst = db.setData("delete from businessinfo where id=? ");
+            pst.setString(1, id);
+
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Record Deleted");
+            txtsname.setText("");
+            txtoname.setText("");
+            txtaddress.setText("");
+            txtemail.setText("");
+            txtnumber.setText("");
+            txtbranch.setText("");
+            txtwebsite.setText("");
+            txtgst.setText("");
+            txtid.setText("");
+            txtgstin.setText("");
+            jButton3.setEnabled(true);
+
+            txtid.requestFocus();
+            tableLoad();
+        } catch (SQLException ex) {
+            Logger.getLogger(Businessinfo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Businessinfo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txtdeleteActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            add();
+        } catch (SQLException ex) {
+            Logger.getLogger(Businessinfo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txtsname.requestFocus();
+        }
+    }//GEN-LAST:event_txtidKeyPressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        try {
+            JFileChooser picchooser = new JFileChooser();
+            picchooser.showOpenDialog(null);
+            File pic = picchooser.getSelectedFile();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("*.images","png","jpg");
+            picchooser.addChoosableFileFilter(filter);
+            path= pic.getAbsolutePath();
+            BufferedImage img;
+            img = ImageIO.read(picchooser.getSelectedFile());
+            ImageIcon imageIcon = new ImageIcon(new
+                ImageIcon(img).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT));
+            txtphoto.setIcon(imageIcon);
+
+            File image = new File(path);
+            FileInputStream fis = new FileInputStream(image);
+            ByteArrayOutputStream baos= new ByteArrayOutputStream();
+            byte[] buff = new byte[1024];
+            for(int readNum; (readNum=fis.read(buff)) !=-1 ; )
+            {
+                baos.write(buff,0,readNum);
+            }
+            userimage=baos.toByteArray();
+
+        } catch (IOException ex) {
+            Logger.getLogger(Businessinfo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtgstKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtgstKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txtgstin.requestFocus();}
+    }//GEN-LAST:event_txtgstKeyPressed
+
+    private void txtbranchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbranchKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txtwebsite.requestFocus();}
+    }//GEN-LAST:event_txtbranchKeyPressed
+
+    private void txtnumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnumberKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txtbranch.requestFocus();}
+    }//GEN-LAST:event_txtnumberKeyPressed
+
+    private void txtwebsiteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtwebsiteKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txtgst.requestFocus();}
+    }//GEN-LAST:event_txtwebsiteKeyPressed
+
+    private void txtaddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtaddressKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txtemail.requestFocus();}
+    }//GEN-LAST:event_txtaddressKeyPressed
+
+    private void txtemailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtemailKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txtnumber.requestFocus();}
+    }//GEN-LAST:event_txtemailKeyPressed
+
+    private void txtsnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsnameKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txtoname.requestFocus();
+        }
+    }//GEN-LAST:event_txtsnameKeyPressed
+
+    private void txtsnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsnameActionPerformed
+
+    }//GEN-LAST:event_txtsnameActionPerformed
+
+    private void txtonameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtonameKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            txtaddress.requestFocus();}
+    }//GEN-LAST:event_txtonameKeyPressed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+
+        df = (DefaultTableModel) jTable1.getModel();
+
+        int selected = jTable1.getSelectedRow();
+
+        txtid.setText(df.getValueAt(selected, 0).toString());
+        txtsname.setText(df.getValueAt(selected, 1).toString());
+        txtoname.setText(df.getValueAt(selected, 2).toString());
+        txtaddress.setText(df.getValueAt(selected, 3).toString());
+        txtemail.setText(df.getValueAt(selected, 4).toString());
+        txtnumber.setText(df.getValueAt(selected, 5).toString());
+        txtbranch.setText(df.getValueAt(selected, 6).toString());
+
+        txtwebsite.setText(df.getValueAt(selected, 7).toString());
+        txtgst.setText(df.getValueAt(selected, 8).toString());
+        txtgstin.setText(df.getValueAt(selected, 9).toString());
+
+        jButton3.setEnabled(false);
+
+        Blob blob;
+
+        try {
+            pst1 = db.setData("select * from businessinfo where id =?");
+            pst1.setString(1,df.getValueAt(selected,0).toString());
+            ResultSet rs = pst1.executeQuery();
+            rs.next();
+            blob = rs.getBlob("shopimg");
+            byte[]imagebytes = blob.getBytes(1,(int)blob.length());
+            userimage = blob.getBytes(1,(int)blob.length());
+            ImageIcon image = new ImageIcon(imagebytes);
+            Image im = image.getImage();
+            Image myImg = im.getScaledInstance(txtphoto.getWidth(),txtphoto.getHeight(),Image.SCALE_SMOOTH);
+            ImageIcon newImage = new ImageIcon(myImg);
+
+            txtphoto.setIcon(newImage) ;
+        } catch (SQLException ex) {
+            Logger.getLogger(Businessinfo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Businessinfo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     
     public void tableLoad() throws SQLException, ClassNotFoundException
@@ -449,10 +682,13 @@ public class Businessinfo extends javax.swing.JInternalFrame {
                  
                     v2.add(rs.getString("shopbranch"));
                            v2.add(rs.getString("shopwebsite"));
+                           
                                     
                                           
                                            v2.add(rs.getString("gst"));
                                                     v2.add(rs.getString("gstin"));
+                                                    v2.add(rs.getString("shopimg"));
+                                                    
                                            
                     
                 }
@@ -460,45 +696,7 @@ public class Businessinfo extends javax.swing.JInternalFrame {
 
             }     
 
-    }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
-        try {
-        JFileChooser picchooser = new JFileChooser();
-       picchooser.showOpenDialog(null);
-       File pic = picchooser.getSelectedFile();       
-       FileNameExtensionFilter filter = new FileNameExtensionFilter("*.images","png","jpg");
-       picchooser.addChoosableFileFilter(filter);     
-        path= pic.getAbsolutePath();
-       BufferedImage img;             
-       img = ImageIO.read(picchooser.getSelectedFile());
-       ImageIcon imageIcon = new ImageIcon(new
-       ImageIcon(img).getImage().getScaledInstance(250, 250, Image.SCALE_DEFAULT));
-              txtphoto.setIcon(imageIcon); 
-              
-              
-             File image = new File(path);
-            FileInputStream fis = new FileInputStream(image);
-            ByteArrayOutputStream baos= new ByteArrayOutputStream();
-            byte[] buff = new byte[1024];
-            for(int readNum; (readNum=fis.read(buff)) !=-1 ; )
-            {
-                baos.write(buff,0,readNum);
-            }
-            userimage=baos.toByteArray();
-              
-              
-              
-        } catch (IOException ex) {
-            Logger.getLogger(Businessinfo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-       
-       
-      
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
-  void check() throws ClassNotFoundException,SQLException
+    }  void check() throws ClassNotFoundException,SQLException
   {
         try {
            rs=db.getData("select * from businessinfo");
@@ -596,155 +794,25 @@ public class Businessinfo extends javax.swing.JInternalFrame {
         }
         
     }
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
-            add();
-        } catch (SQLException ex) {
-            Logger.getLogger(Businessinfo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-  txtsname.setText("");
-            txtoname.setText("");
-            txtid.setText("");
-            txtaddress.setText("");
-            txtemail.setText("");
-            txtnumber.setText("");
-            txtbranch.setText("");
-            txtwebsite.setText("");
-            txtgst.setText("");
-            txtgstin.setText("");
-          txtphoto.setText("");
-                      txtsname.requestFocus();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void txtdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdeleteActionPerformed
-         try {
-             df = (DefaultTableModel) jTable1.getModel();
-            int selected = jTable1.getSelectedRow();
-            String id = df.getValueAt(selected, 0).toString();
-            pst = db.setData("delete from businessinfo where id=? ");
-            pst.setString(1, id);
-          
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Record Deleted");
-            txtsname.setText("");
-            txtoname.setText("");
-            txtaddress.setText("");
-            txtemail.setText("");
-            txtnumber.setText("");
-            txtbranch.setText("");
-            txtwebsite.setText("");
-            txtgst.setText("");
-            txtid.setText("");
-            txtgstin.setText("");
-            jButton3.setEnabled(true);
-            
-            txtid.requestFocus();
-            tableLoad();
-         } catch (SQLException ex) {
-            Logger.getLogger(Businessinfo.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Businessinfo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_txtdeleteActionPerformed
-
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-    
-         df = (DefaultTableModel) jTable1.getModel();
-
-        int selected = jTable1.getSelectedRow();
-
-       txtid.setText(df.getValueAt(selected, 0).toString());
-        txtsname.setText(df.getValueAt(selected, 1).toString());
-        txtoname.setText(df.getValueAt(selected, 2).toString());
-        txtaddress.setText(df.getValueAt(selected, 3).toString());
-        txtemail.setText(df.getValueAt(selected, 4).toString());
-        txtnumber.setText(df.getValueAt(selected, 5).toString());
-        txtbranch.setText(df.getValueAt(selected, 6).toString());
-       
-        txtwebsite.setText(df.getValueAt(selected, 7).toString());
-         txtgst.setText(df.getValueAt(selected, 8).toString());
-          txtgstin.setText(df.getValueAt(selected, 9).toString());
-      
-        
-        jButton3.setEnabled(false);
-    }//GEN-LAST:event_jTable1MouseClicked
-
-    private void txtidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidKeyPressed
-      if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-          txtsname.requestFocus();
-      }
-    }//GEN-LAST:event_txtidKeyPressed
-
-    private void txtsnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsnameActionPerformed
-        
-    }//GEN-LAST:event_txtsnameActionPerformed
-
-    private void txtsnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsnameKeyPressed
-             if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-          txtoname.requestFocus();
-             }
-    }//GEN-LAST:event_txtsnameKeyPressed
-
-    private void txtonameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtonameKeyPressed
-             if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-          txtaddress.requestFocus();}
-    }//GEN-LAST:event_txtonameKeyPressed
-
-    private void txtaddressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtaddressKeyPressed
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-          txtemail.requestFocus();}
-    }//GEN-LAST:event_txtaddressKeyPressed
-
-    private void txtnumberKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnumberKeyPressed
-            if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-          txtbranch.requestFocus();}
-    }//GEN-LAST:event_txtnumberKeyPressed
-
-    private void txtbranchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbranchKeyPressed
-         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-          txtwebsite.requestFocus();}
-    }//GEN-LAST:event_txtbranchKeyPressed
-
-    private void txtemailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtemailKeyPressed
-          if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-          txtnumber.requestFocus();}
-    }//GEN-LAST:event_txtemailKeyPressed
-
-    private void txtwebsiteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtwebsiteKeyPressed
-            if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-          txtgst.requestFocus();}
-    }//GEN-LAST:event_txtwebsiteKeyPressed
-
-    private void txtgstKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtgstKeyPressed
-           if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-          txtgstin.requestFocus();}
-    }//GEN-LAST:event_txtgstKeyPressed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtaddress;

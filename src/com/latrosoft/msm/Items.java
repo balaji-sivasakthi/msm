@@ -166,7 +166,7 @@ public class Items extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         txtid = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(102, 0, 102));
+        setBackground(new java.awt.Color(0, 0, 51));
         setClosable(true);
         setForeground(new java.awt.Color(255, 255, 255));
         setIconifiable(true);
@@ -175,7 +175,7 @@ public class Items extends javax.swing.JInternalFrame {
         setTitle("Add Items");
         setPreferredSize(new java.awt.Dimension(1366, 768));
 
-        jPanel1.setBackground(new java.awt.Color(102, 0, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -206,7 +206,7 @@ public class Items extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Specification       :");
 
-        txtname.setBackground(new java.awt.Color(102, 0, 102));
+        txtname.setBackground(new java.awt.Color(0, 0, 51));
         txtname.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtname.setForeground(new java.awt.Color(255, 255, 255));
         txtname.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -215,7 +215,7 @@ public class Items extends javax.swing.JInternalFrame {
             }
         });
 
-        txtrate.setBackground(new java.awt.Color(102, 0, 102));
+        txtrate.setBackground(new java.awt.Color(0, 0, 51));
         txtrate.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtrate.setForeground(new java.awt.Color(255, 255, 255));
         txtrate.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -224,7 +224,7 @@ public class Items extends javax.swing.JInternalFrame {
             }
         });
 
-        txtdiscount.setBackground(new java.awt.Color(102, 0, 102));
+        txtdiscount.setBackground(new java.awt.Color(0, 0, 51));
         txtdiscount.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtdiscount.setForeground(new java.awt.Color(255, 255, 255));
         txtdiscount.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -233,7 +233,7 @@ public class Items extends javax.swing.JInternalFrame {
             }
         });
 
-        txtstock.setBackground(new java.awt.Color(102, 0, 102));
+        txtstock.setBackground(new java.awt.Color(0, 0, 51));
         txtstock.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtstock.setForeground(new java.awt.Color(255, 255, 255));
         txtstock.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -242,7 +242,7 @@ public class Items extends javax.swing.JInternalFrame {
             }
         });
 
-        txtmodel.setBackground(new java.awt.Color(102, 0, 102));
+        txtmodel.setBackground(new java.awt.Color(0, 0, 51));
         txtmodel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtmodel.setForeground(new java.awt.Color(255, 255, 255));
         txtmodel.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -251,7 +251,7 @@ public class Items extends javax.swing.JInternalFrame {
             }
         });
 
-        txtbrand.setBackground(new java.awt.Color(102, 0, 102));
+        txtbrand.setBackground(new java.awt.Color(0, 0, 51));
         txtbrand.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtbrand.setForeground(new java.awt.Color(255, 255, 255));
         txtbrand.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -260,7 +260,7 @@ public class Items extends javax.swing.JInternalFrame {
             }
         });
 
-        txtspecification.setBackground(new java.awt.Color(102, 0, 102));
+        txtspecification.setBackground(new java.awt.Color(0, 0, 51));
         txtspecification.setColumns(20);
         txtspecification.setForeground(new java.awt.Color(255, 255, 255));
         txtspecification.setRows(5);
@@ -331,7 +331,9 @@ public class Items extends javax.swing.JInternalFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
+        jTextField2.setBackground(new java.awt.Color(0, 0, 51));
         jTextField2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setText("ITEMS");
 
         jScrollPane2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -400,9 +402,11 @@ public class Items extends javax.swing.JInternalFrame {
         });
 
         txtdate.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txtdate.setForeground(new java.awt.Color(255, 255, 255));
         txtdate.setText("Date");
 
         txttime.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        txttime.setForeground(new java.awt.Color(255, 255, 255));
         txttime.setText("Time");
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
@@ -424,60 +428,63 @@ public class Items extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel10)
-                                .addGap(77, 77, 77)
-                                .addComponent(txtid)
-                                .addGap(272, 272, 272))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(71, 71, 71)
+                                .addComponent(txtid)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 277, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(249, 249, 249)
-                                .addComponent(txtdate)
-                                .addGap(78, 78, 78)
-                                .addComponent(txttime)
-                                .addGap(42, 42, 42))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addContainerGap(59, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(95, 95, 95)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtdate)
+                                .addGap(77, 77, 77)
+                                .addComponent(txttime)
+                                .addGap(45, 45, 45))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
+                        .addGap(35, 35, 35)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(28, 28, 28)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                        .addGap(27, 27, 27)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtid)
-                    .addComponent(txtdate)
-                    .addComponent(txttime))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(txtid)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtdate)
+                            .addComponent(txttime))))
+                .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();

@@ -95,7 +95,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\LATRO.jpg"/>
+              <Image iconType="2" name="D:\Latro Intro.jpg"/>
             </Property>
           </Properties>
           <Constraints>

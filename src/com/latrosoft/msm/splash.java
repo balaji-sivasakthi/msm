@@ -42,7 +42,7 @@ public class splash extends javax.swing.JFrame {
         loadbar.setBounds(240, 350, 420, 5);
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\LATRO.jpg")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\Latro Intro.jpg")); // NOI18N
         jPanel1.add(jLabel3);
         jLabel3.setBounds(0, 0, 721, 440);
 
