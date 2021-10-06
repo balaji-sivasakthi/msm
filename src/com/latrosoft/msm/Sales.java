@@ -109,7 +109,7 @@ public class Sales extends javax.swing.JInternalFrame {
 
             if (rs.next() == false) {
                 JOptionPane.showMessageDialog(this, "Item Not Found");
-
+                txtitemid.requestFocus();
                 txtitemid.setText("");
             } else {
                 String iname = rs.getString("itemname");
@@ -126,7 +126,7 @@ public class Sales extends javax.swing.JInternalFrame {
                 txtrate.setText(rate.trim());
                 txtdiscount.setText(discount.trim());
                 
-                txtcount.requestFocus();
+                 txtcusname.requestFocus();
             }
 
         } catch (SQLException ex) {
@@ -365,6 +365,7 @@ public class Sales extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Sales Completed");
             DefaultTableModel df=(DefaultTableModel) jTable1.getModel();
             df.setRowCount(0);
+         
             
                  txtitemid.setText("");
                   txtiname.setText("");
@@ -442,6 +443,7 @@ public class Sales extends javax.swing.JInternalFrame {
         txttime1 = new javax.swing.JLabel();
         txtdate = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 0, 51));
         setClosable(true);
@@ -696,6 +698,16 @@ public class Sales extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("SALES");
 
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(0, 0, 51));
+        jButton7.setText("Next");
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -779,14 +791,16 @@ public class Sales extends javax.swing.JInternalFrame {
                         .addComponent(txttime1)
                         .addGap(74, 74, 74))))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(239, 239, 239)
+                .addGap(92, 92, 92)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106)
+                .addGap(109, 109, 109)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81)
+                .addGap(95, 95, 95)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -861,7 +875,8 @@ public class Sales extends javax.swing.JInternalFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43))
         );
 
@@ -897,7 +912,7 @@ public class Sales extends javax.swing.JInternalFrame {
     private void txtitemidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtitemidKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             BarCode();
-            txtcusname.requestFocus();
+      
         }
     }//GEN-LAST:event_txtitemidKeyPressed
 
@@ -1063,6 +1078,16 @@ public class Sales extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        try {
+            autoID();
+        } catch (SQLException ex) {
+            Logger.getLogger(Sales.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Sales.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -1071,6 +1096,7 @@ public class Sales extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

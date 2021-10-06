@@ -303,8 +303,8 @@ public class Users extends javax.swing.JInternalFrame {
 
         savebtn.setBackground(new java.awt.Color(255, 255, 255));
         savebtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        savebtn.setForeground(new java.awt.Color(255, 255, 255));
-        savebtn.setText("Save");
+        savebtn.setForeground(new java.awt.Color(0, 0, 51));
+        savebtn.setText("Add");
         savebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         savebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,7 +314,7 @@ public class Users extends javax.swing.JInternalFrame {
 
         browsebtn.setBackground(new java.awt.Color(255, 255, 255));
         browsebtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        browsebtn.setForeground(new java.awt.Color(255, 255, 255));
+        browsebtn.setForeground(new java.awt.Color(0, 0, 51));
         browsebtn.setText("Search Image");
         browsebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         browsebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -334,6 +334,7 @@ public class Users extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         table.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        table.setForeground(new java.awt.Color(0, 0, 51));
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -430,7 +431,7 @@ public class Users extends javax.swing.JInternalFrame {
 
         searchbtn.setBackground(new java.awt.Color(255, 255, 255));
         searchbtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        searchbtn.setForeground(new java.awt.Color(255, 255, 255));
+        searchbtn.setForeground(new java.awt.Color(0, 0, 51));
         searchbtn.setText("Search");
         searchbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -441,7 +442,7 @@ public class Users extends javax.swing.JInternalFrame {
 
         editbtn.setBackground(new java.awt.Color(255, 255, 255));
         editbtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        editbtn.setForeground(new java.awt.Color(255, 255, 255));
+        editbtn.setForeground(new java.awt.Color(0, 0, 51));
         editbtn.setText("Edit");
         editbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         editbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -452,7 +453,7 @@ public class Users extends javax.swing.JInternalFrame {
 
         deletebtn.setBackground(new java.awt.Color(255, 255, 255));
         deletebtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        deletebtn.setForeground(new java.awt.Color(255, 255, 255));
+        deletebtn.setForeground(new java.awt.Color(0, 0, 51));
         deletebtn.setText("Delete");
         deletebtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deletebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -463,7 +464,7 @@ public class Users extends javax.swing.JInternalFrame {
 
         clearbtn.setBackground(new java.awt.Color(255, 255, 255));
         clearbtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        clearbtn.setForeground(new java.awt.Color(255, 255, 255));
+        clearbtn.setForeground(new java.awt.Color(0, 0, 51));
         clearbtn.setText("Clear");
         clearbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         clearbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -517,7 +518,7 @@ public class Users extends javax.swing.JInternalFrame {
 
         clearbtn1.setBackground(new java.awt.Color(255, 255, 255));
         clearbtn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        clearbtn1.setForeground(new java.awt.Color(255, 255, 255));
+        clearbtn1.setForeground(new java.awt.Color(0, 0, 51));
         clearbtn1.setText("Close");
         clearbtn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         clearbtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -582,13 +583,10 @@ public class Users extends javax.swing.JInternalFrame {
                                 .addGap(8, 8, 8)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtsalary, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addComponent(savebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(editbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(9, 9, 9)
+                                .addComponent(savebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(editbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26)
                                 .addComponent(deletebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -599,7 +597,10 @@ public class Users extends javax.swing.JInternalFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel9))
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(txtsalary, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addComponent(txtcheck, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(111, 111, 111)))
@@ -697,16 +698,14 @@ public class Users extends javax.swing.JInternalFrame {
                                     .addComponent(clearbtn1)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
-                                .addComponent(txtsalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtutype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtsalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(31, 31, 31)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))

@@ -680,6 +680,11 @@ public class Vendors extends javax.swing.JInternalFrame {
         });
 
         txtemail2.setForeground(new java.awt.Color(0, 0, 51));
+        txtemail2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtemail2KeyPressed(evt);
+            }
+        });
 
         txtaddress2.setColumns(20);
         txtaddress2.setForeground(new java.awt.Color(0, 0, 51));
@@ -1017,6 +1022,7 @@ public class Vendors extends javax.swing.JInternalFrame {
 
             txtname2.requestFocus();
             load();
+            autoID();
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
@@ -1063,6 +1069,7 @@ public class Vendors extends javax.swing.JInternalFrame {
             txtname2.requestFocus();
             load();
              jButton12.setEnabled(true);
+             autoID();
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1115,6 +1122,7 @@ public class Vendors extends javax.swing.JInternalFrame {
             txtname2.requestFocus();
             load();
             jButton12.setEnabled(true);
+            autoID();
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Vendors.class.getName()).log(Level.SEVERE, null, ex);
@@ -1137,6 +1145,11 @@ public class Vendors extends javax.swing.JInternalFrame {
             txtemail2.requestFocus();
         }
     }//GEN-LAST:event_txtnumber2KeyPressed
+
+    private void txtemail2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtemail2KeyPressed
+       if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+       txtaddress.requestFocus();}
+    }//GEN-LAST:event_txtemail2KeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

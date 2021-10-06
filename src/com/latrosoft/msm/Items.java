@@ -196,15 +196,15 @@ public class Items extends javax.swing.JInternalFrame {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Model                   :");
+        jLabel7.setText("Model                     :");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Brand                   :");
+        jLabel8.setText("Brand                     :");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Specification       :");
+        jLabel9.setText("Specification        :");
 
         txtname.setBackground(new java.awt.Color(0, 0, 51));
         txtname.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -554,6 +554,7 @@ public class Items extends javax.swing.JInternalFrame {
              
             txtname.requestFocus();
             load();
+            autoID();
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Items.class.getName()).log(Level.SEVERE, null, ex);
@@ -608,6 +609,7 @@ public class Items extends javax.swing.JInternalFrame {
             txtname.requestFocus();
             load();
             jButton1.setEnabled(true);
+            autoID();
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Items.class.getName()).log(Level.SEVERE, null, ex);
@@ -663,6 +665,7 @@ public class Items extends javax.swing.JInternalFrame {
             txtname.requestFocus();
             load();
             jButton1.setEnabled(true);
+            autoID();
 
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Items.class.getName()).log(Level.SEVERE, null, ex);

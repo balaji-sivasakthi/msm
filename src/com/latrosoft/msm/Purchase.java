@@ -129,10 +129,11 @@ public class Purchase extends javax.swing.JInternalFrame {
             pst = con.prepareStatement("select * from item where itemid = ?");
             pst.setString(1, itemid);
             rs = pst.executeQuery();
-
+            
             if (rs.next() == false) {
+                   
                 JOptionPane.showMessageDialog(this, "Item Not Found");
-
+               txtitemid.requestFocus();
                 txtitemid.setText("");
             txtname.setText("");
             txtbrand.setText("");
@@ -141,6 +142,7 @@ public class Purchase extends javax.swing.JInternalFrame {
             txtpay.setText("");
             txtbal.setText("");
             } else {
+               
                String itemname=rs.getString("itemname");
                String brand=rs.getString("brand");
                String model=rs.getString("model");
@@ -150,7 +152,7 @@ public class Purchase extends javax.swing.JInternalFrame {
                 txtbrand.setText(brand.trim());
                 txtmodel.setText(model.trim());
               
-                txtmodel.requestFocus();
+                 txtrate.requestFocus();
             }
 
         } catch (SQLException ex) {
@@ -297,6 +299,7 @@ public class Purchase extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Purchase Completed");
             DefaultTableModel df=(DefaultTableModel) jTable1.getModel();
             df.setRowCount(0);
+            autoID();
             txtitemid.setText("");
             txtname.setText("");
             txtbrand.setText("");
@@ -761,7 +764,7 @@ public class Purchase extends javax.swing.JInternalFrame {
     private void txtitemidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtitemidKeyPressed
        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
           render();
-          txtrate.requestFocus();
+          
         }
     }//GEN-LAST:event_txtitemidKeyPressed
 
